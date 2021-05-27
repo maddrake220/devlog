@@ -1,6 +1,6 @@
 ---
-title: "Two Forms of Pre-rendering"
-date: "2020-01-01"
+title: "NomadCode 코드챌린지 #1"
+date: "2021-05-24"
 image: "/images/4444.jpg"
 description: "Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page."
 ---
