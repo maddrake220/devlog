@@ -1,4 +1,4 @@
-# React, Next.js, Css(styled-components), Graphql 을 활용한 개발 블로그 devlog 개발
+# React, Next.js, Css(styled-components), Madkdown 을 활용한 개발 블로그 devlog 개발
 
 ## To Do list
 
