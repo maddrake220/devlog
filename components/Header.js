@@ -20,7 +20,6 @@ const Container = styled.div`
     
 `;
  const HeadIcon = styled.div`
-    
 `;
 
 const List = styled.ul`
@@ -30,7 +29,6 @@ const List = styled.ul`
 `;
 
 const SImage = styled(Image)`
-    border-radius: 9999px;
 `;
 const Item = styled.li`
     position: relative;
@@ -78,8 +76,8 @@ function myHeader({router}) {
                     <a>
                     <SImage
                         priority
-                        src="/images/deno.jpg"
-                        height={44}
+                        src="/images/devlog.jpg"
+                        height={47}
                         width={44}
                     />
                     </a>

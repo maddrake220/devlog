@@ -1,7 +1,8 @@
 ---
-title: "NomadCode 코드챌린지 #1"
+title: "Category Test"
 date: "2021-05-24"
 image: "/images/4444.jpg"
+category: ["React", "ES6", "Css"]
 description: "Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page."
 ---
 

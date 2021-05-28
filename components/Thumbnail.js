@@ -28,7 +28,7 @@ const Description = styled.div`
 `;
 
 const SImage = styled(Image)`
-border-radius: 10px;
+    border-radius: 10px;
 `;
 
 const ImageContainer = styled.div`
@@ -39,25 +39,50 @@ const ImageContainer = styled.div`
     }
 `;
 
-const Thumbnail = ({id, image, title, year, content}) => 
+const CategoryContainer = styled.div`
+    margin: 1rem;
+`;
+
+const Category = styled.div`
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 3px;
+    margin-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+`;
+
+const Thumbnail = ({id, image, title, year, content, category}) => 
     
-        <Link href={`/posts/${id}`}>
-          <a>
+          
             <Container>
-                <ImageContainer>
-                    <SImage
-                        priority
-                        src={image}
-                        width={344}
-                        height={244}
-                    />
-                <Title>{title}</Title>
-                <Description>{content && content.substring(0,142)}...</Description>
+                <Link href={`/posts/${id}`}>
+                    <a>
+                    <ImageContainer>
+                
+                        <SImage
+                            priority
+                            src={image}
+                            width={344}
+                            height={244}
+                        />
+                    <Title>{title}</Title>
+                    <Description>{content && content.substring(0,142)}...</Description>
+                    
+                    </ImageContainer>
+                    </a>
+                </Link>
+                    <CategoryContainer>{category && category.map((item, index) => (
+                        
+                            <Category>{item}</Category>
+                    ))}
+                    </CategoryContainer>
+               
                 <Date dateString={year}/>
-                </ImageContainer>
             </Container>
-        </a>
-    </Link>
+        
+  
     
     
 
@@ -67,7 +92,8 @@ Thumbnail.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     year: PropTypes.string,
-    content: PropTypes.string
+    content: PropTypes.string,
+    category: PropTypes.array
 }
 
 export default Thumbnail;

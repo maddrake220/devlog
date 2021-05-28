@@ -57,13 +57,14 @@ export default function Home({ allPostsData }) {
         <h2 className={utilStyles.headingLg}>Devlog</h2>
         <ul className={utilStyles.list}>
           <Section>
-            {allPostsData && allPostsData.map(({ id, date, title, image, description }) => (
+            {allPostsData && allPostsData.map(({ id, date, title, image, description, category }) => (
               <Thumbnail 
                 id={id}
                 year={date}
                 title={title}
                 image={image}
                 content={description}
+                category={category? category : ""}
                 />
                 
             ))}
