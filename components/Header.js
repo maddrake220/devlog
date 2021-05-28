@@ -86,21 +86,6 @@ function myHeader({router}) {
                 </SLink>
             </HeadIcon>
 
-            <Item current={router.pathname === "/posts"}>
-            <SLink href="posts">
-                <a>
-                Posts!
-                </a>
-            </SLink>
-            </Item>
-            
-            <Item current={router.pathname === "/info"}>
-            <SLink href="posts">
-                <a>
-                Info!
-                </a>
-            </SLink>
-            </Item>
         </List>
         <RightMenu>
             <SLink href="https://github.com/maddrake220">
