@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import Image from 'next/Image'
 
 const Header = styled.header`
-    position:fixed;
     background-color: white;
+    position:fixed;
     top:0;
     left:0;
     width:100%;
@@ -19,8 +19,8 @@ const Container = styled.div`
     margin: 0rem auto 6rem;
     
 `;
- const HeadIcon = styled.div`
-`;
+ const HeadIcon = styled(Image)`
+ `
 
 const List = styled.ul`
     margin-top: 10px;
@@ -29,6 +29,7 @@ const List = styled.ul`
 `;
 
 const SImage = styled(Image)`
+    border-radius: 9999px;
 `;
 const Item = styled.li`
     position: relative;
@@ -71,10 +72,9 @@ function myHeader({router}) {
       <Header>
           <Container>
         <List>
-            <HeadIcon>
                 <SLink href="/">
                     <a>
-                    <SImage
+                    <HeadIcon
                         priority
                         src="/images/devlog.jpg"
                         height={47}
@@ -82,7 +82,6 @@ function myHeader({router}) {
                     />
                     </a>
                 </SLink>
-            </HeadIcon>
 
         </List>
         <RightMenu>

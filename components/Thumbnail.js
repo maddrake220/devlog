@@ -6,6 +6,8 @@ import Image from 'next/image'
 import Date from "./date"
 
 const Container = styled.div`
+    position: relative;
+    background-color: whitesmoke;
     border-radius: 10px;
     font-size: 12px;
     box-sizing: content-box;
@@ -39,11 +41,17 @@ const ImageContainer = styled.div`
     }
 `;
 
+const SDate = styled.div`
+    bottom: 5px;
+    right : 6px;
+    position:absolute;
+`;
 const CategoryContainer = styled.div`
     margin: 1rem;
 `;
 
 const Category = styled.div`
+    background-color: #ebfbff;
     display: inline-block;
     box-sizing: border-box;
     padding: 3px;
@@ -53,14 +61,21 @@ const Category = styled.div`
 
 `;
 
+const AStyle = styled.a`
+
+    &:hover{
+        text-decoration: none;
+        cursor:pointer;
+    }
+`;
+
 const Thumbnail = ({id, image, title, year, content, category}) => 
     
           
             <Container>
                 <Link href={`/posts/${id}`}>
-                    <a>
+                    <AStyle>
                     <ImageContainer>
-                
                         <SImage
                             priority
                             src={image}
@@ -68,18 +83,19 @@ const Thumbnail = ({id, image, title, year, content, category}) =>
                             height={244}
                         />
                     <Title>{title}</Title>
-                    <Description>{content && content.substring(0,142)}...</Description>
+                    <Description>{content && content.substring(0,136)}...</Description>
                     
                     </ImageContainer>
-                    </a>
+                    </AStyle>
                 </Link>
                     <CategoryContainer>{category && category.map((item, index) => (
                         
                             <Category>{item}</Category>
                     ))}
                     </CategoryContainer>
-               
-                <Date dateString={year}/>
+                <SDate>
+                    <Date dateString={year}/>
+                </SDate>
             </Container>
         
   

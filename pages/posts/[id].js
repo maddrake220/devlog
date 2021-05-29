@@ -6,6 +6,9 @@ import utilStyles from '../../styles/utils.module.css'
 import styled from "styled-components"
 
 const Container = styled.div`
+  display: inline-block;
+  padding-left: 10rem;
+  padding-right: 10rem;
   padding-top: 3rem;
 `;
 
