@@ -2,7 +2,7 @@ import Layout from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import Section from "../components/Section"
-import Thumbnail from '../components/thumbnail'
+import Thumbnail from '../components/Thumbnail'
 
 
 /*
