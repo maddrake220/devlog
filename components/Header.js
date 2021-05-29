@@ -1,7 +1,7 @@
 import { withRouter } from 'next/router'
 import Link from 'next/link'
 import styled from 'styled-components'
-import Image from 'next/Image'
+import Image from 'next/image'
 
 const Header = styled.header`
     background-color: white;
