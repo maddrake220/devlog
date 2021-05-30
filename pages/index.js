@@ -47,9 +47,12 @@ const Container = styled.div`
 
 `;
 
-const MainContainer = styled.div`
-  position: relative;
+const SidebarContainer = styled.div`
+    position: fixed;
+    height: 100%;
+    z-index: 10;
 `;
+
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
   return {
@@ -61,8 +64,11 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   return (
+    <>
+    <SidebarContainer>
+    <Sidebar/>
+  </SidebarContainer>
     <Container>
-      <MainContainer>
         <Layout home>
 
           <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -84,7 +90,7 @@ export default function Home({ allPostsData }) {
             </ul>
           </section>
         </Layout>
-      </MainContainer>
     </Container>
+    </>
   )
 }
