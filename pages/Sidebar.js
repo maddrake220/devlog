@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
+import Image from 'next/image'
 import {
   ProSidebar,
   Menu,
@@ -8,40 +9,27 @@ import {
   SidebarFooter,
   SidebarContent
 } from 'react-pro-sidebar';
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { FaHome, FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import Link from 'next/link';
 
 const Sidebar = () => {
-    const [Toggle, setToggle] = useState(true)
-    const [collapse, setcollapse] = useState(true)
-    const [onToggle, setonToggle] = useState(true)
-
-    const ToggleHandler = (value) => {
-        setToggle(value)
-        setcollapse(value)
-        setonToggle(value)
-    }
   return (
     
     <ProSidebar
-      collapsed={collapse}
-      toggled={Toggle}
+      collapsed="false"
       breakPoint="md"
-      onToggle={onToggle}
     >
       <SidebarHeader>
         <div
           style={{
-            padding: '24px',
-            textTransform: 'uppercase',
-            fontWeight: 'bold',
-            fontSize: 14,
-            letterSpacing: '1px',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
+            padding: '26px'
           }}
         >
-          sidebarTitle
+        <Link href="/"> 
+          <a>
+            <FaHome />
+          </a>
+        </Link>
         </div>
       </SidebarHeader>
 
@@ -56,7 +44,6 @@ const Sidebar = () => {
           <MenuItem icon={<FaGem />}> components</MenuItem>
         </Menu>
         <Menu iconShape="circle">
-            
           <SubMenu
             suffix={<span className="badge yellow">3</span>}
             title={<span></span>}
@@ -92,24 +79,21 @@ const Sidebar = () => {
       </SidebarContent>
 
       <SidebarFooter style={{ textAlign: 'center' }}>
-        <div>
-            <button onClick={()=>ToggleHandler(true)}>OO</button>
-            <button onClick={()=>ToggleHandler(false)}>XX</button>
-        </div>
         <div
           className="sidebar-btn-wrapper"
           style={{
             padding: '20px 24px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
           }}
         >
           <a
-            href="https://github.com/azouaoui-med/react-pro-sidebar"
+            href="https://github.com/maddrake220"
             target="_blank"
             className="sidebar-btn"
             rel="noopener noreferrer"
           >
             <FaGithub />
-            <span> viewSource' </span>
           </a>
         </div>
       </SidebarFooter>

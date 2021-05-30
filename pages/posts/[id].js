@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Date from "../../components/date"
 import utilStyles from '../../styles/utils.module.css'
 import styled from "styled-components"
+import Sidebar from '../Sidebar'
 
 const Container = styled.div`
   display: inline-block;
@@ -11,7 +12,11 @@ const Container = styled.div`
   padding-right: 10rem;
   padding-top: 3rem;
 `;
-
+const SidebarContainer = styled.div`
+    position: fixed;
+    height: 100%;
+    z-index: 10;
+`;
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id)
     return {
@@ -31,6 +36,11 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
     return (
+      <>
+      <SidebarContainer>
+        <Sidebar />
+      </SidebarContainer>
+      
       <Layout>
         <Container>
             <Head>
@@ -47,6 +57,7 @@ export default function Post({ postData }) {
             </article>
         </Container>
       </Layout>
+      </>
     )
   }
 
