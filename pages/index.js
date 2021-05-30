@@ -4,8 +4,6 @@ import { getSortedPostsData } from '../lib/posts'
 import Section from "../components/Section"
 import Thumbnail from '../components/Thumbnail'
 import styled from "styled-components"
-import Sidebar from "./Sidebar"
-import 'react-pro-sidebar/dist/css/styles.css';
 /*
 
 export async function getSortedPostsData() {
@@ -65,9 +63,6 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   return (
     <>
-    <SidebarContainer>
-    <Sidebar/>
-  </SidebarContainer>
     <Container>
         <Layout home>
 

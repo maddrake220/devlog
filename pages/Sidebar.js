@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Image from 'next/image'
 import {
   ProSidebar,
@@ -9,31 +9,54 @@ import {
   SidebarFooter,
   SidebarContent
 } from 'react-pro-sidebar';
-import { FaHome, FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { FaToggleOff, FaToggleOn, FaHome, FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Sidebar = () => {
+
+    const toggleHandler = (value) => {
+        settoggle(value)
+        setcollapse(value)
+        settoggleB(value)
+    }
+    const [toggle, settoggle] = useState(true)
+    const [collapse, setcollapse] = useState(true)
+    const [toggleB, settoggleB] = useState(true)
+
   return (
     
     <ProSidebar
-      collapsed="false"
+      collapsed={collapse}
+      toggled={toggle}
       breakPoint="md"
+      onToggle={toggleB}
     >
-      <SidebarHeader>
+      <SidebarHeader >
         <div
           style={{
-            padding: '26px'
+            padding: '20px 28px'
           }}
         >
-        <Link href="/"> 
-          <a>
-            <FaHome />
-          </a>
-        </Link>
+            {toggle ?  <FaToggleOff onClick={()=>toggleHandler(false)}/>
+                    :  <FaToggleOn onClick={()=>toggleHandler(true)}/>
+                    }
+          
         </div>
       </SidebarHeader>
 
       <SidebarContent>
+        
+        <Menu iconShape="circle">
+            <MenuItem
+                icon={<FaHome/>}
+                >
+                    <Link href="/"> 
+                    <a>
+                        Home
+                    </a>
+                    </Link>
+                </MenuItem>
+        </Menu>
         <Menu iconShape="circle">
           <MenuItem
             icon={<FaTachometerAlt />}
@@ -44,41 +67,11 @@ const Sidebar = () => {
           <MenuItem icon={<FaGem />}> components</MenuItem>
         </Menu>
         <Menu iconShape="circle">
-          <SubMenu
-            suffix={<span className="badge yellow">3</span>}
-            title={<span></span>}
-            icon={<FaRegLaughWink />}
-          >
-            <MenuItem>submenu 1</MenuItem>
-            <MenuItem>submenu 2</MenuItem>
-            <MenuItem>submenu 3</MenuItem>
-          </SubMenu>
-          <SubMenu
-            prefix={<span className="badge gray">3</span>}
-            title={"test"}
-            icon={<FaHeart />}
-          >
-            <MenuItem>submenu 3</MenuItem>
-            <MenuItem>submenu 1</MenuItem>
-            <MenuItem>submenu 2</MenuItem>
-          </SubMenu>
-          <SubMenu title="multiLevel" icon={<FaList />}>
-            <MenuItem>submenu 1 </MenuItem>
-            <MenuItem>submenu 2 </MenuItem>
-            <SubMenu title={`$submenu' 3`}>
-              <MenuItem>submenu 3.1 </MenuItem>
-              <MenuItem>submenu 3.2 </MenuItem>
-              <SubMenu title={`$submenu 3.3`}>
-                <MenuItem>submenu 3.3.1 </MenuItem>
-                <MenuItem>submenu 3.3.2 </MenuItem>
-                <MenuItem>submenu 3.3.3 </MenuItem>
-              </SubMenu>
-            </SubMenu>
-          </SubMenu>
+          
         </Menu>
       </SidebarContent>
 
-      <SidebarFooter style={{ textAlign: 'center' }}>
+      <SidebarFooter>
         <div
           className="sidebar-btn-wrapper"
           style={{

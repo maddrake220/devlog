@@ -4,19 +4,12 @@ import Head from 'next/head'
 import Date from "../../components/date"
 import utilStyles from '../../styles/utils.module.css'
 import styled from "styled-components"
-import Sidebar from '../Sidebar'
-import 'react-pro-sidebar/dist/css/styles.css';
 
 const Container = styled.div`
   display: inline-block;
   padding-left: 10rem;
   padding-right: 10rem;
   padding-top: 3rem;
-`;
-const SidebarContainer = styled.div`
-    position: fixed;
-    height: 100%;
-    z-index: 10;
 `;
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id)
@@ -38,9 +31,6 @@ export async function getStaticPaths() {
 export default function Post({ postData }) {
     return (
       <>
-      <SidebarContainer>
-        <Sidebar />
-      </SidebarContainer>
       
       <Layout>
         <Container>
