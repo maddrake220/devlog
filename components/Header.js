@@ -64,6 +64,10 @@ const RightMenu = styled.div`
     display: flex;
     float: right;
 `;
+
+const SidebarHandler = (e) => {
+    console.log(e)
+}
 export default withRouter(myHeader)
 
 function myHeader({router}) {
@@ -95,6 +99,7 @@ function myHeader({router}) {
                     />
                 </a>
             </SLink>
+            <button onClick={SidebarHandler}></button>
         </RightMenu>
         </Container>
     </Header>)

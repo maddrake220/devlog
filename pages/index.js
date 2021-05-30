@@ -3,8 +3,9 @@ import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import Section from "../components/Section"
 import Thumbnail from '../components/Thumbnail'
-
-
+import styled from "styled-components"
+import Sidebar from "./Sidebar"
+import 'react-pro-sidebar/dist/css/styles.css';
 /*
 
 export async function getSortedPostsData() {
@@ -40,6 +41,15 @@ function Profile() {
 //  React hook for data fetching called SWR. We highly recommend it if you’re fetching data on the client side.
 //  It can you when do like : Private, user-specific pages where SEO is not relevant 
 */
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+
+`;
+
+const MainContainer = styled.div`
+  position: relative;
+`;
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
   return {
@@ -51,26 +61,30 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   return (
-    <Layout home>
+    <Container>
+      <MainContainer>
+        <Layout home>
 
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Devlog</h2>
-        <ul className={utilStyles.list}>
-          <Section>
-            {allPostsData && allPostsData.map(({ id, date, title, image, description, category }) => (
-              <Thumbnail 
-                id={id}
-                year={date}
-                title={title}
-                image={image}
-                content={description}
-                category={category? category : ""}
-                />
-                
-            ))}
-          </Section>
-        </ul>
-      </section>
-    </Layout>
+          <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+            <h2 className={utilStyles.headingLg}>Devlog</h2>
+            <ul className={utilStyles.list}>
+              <Section>
+                {allPostsData && allPostsData.map(({ id, date, title, image, description, category }) => (
+                  <Thumbnail 
+                    id={id}
+                    year={date}
+                    title={title}
+                    image={image}
+                    content={description}
+                    category={category? category : ""}
+                    />
+                    
+                ))}
+              </Section>
+            </ul>
+          </section>
+        </Layout>
+      </MainContainer>
+    </Container>
   )
 }
