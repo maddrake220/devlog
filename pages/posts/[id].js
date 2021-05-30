@@ -5,6 +5,7 @@ import Date from "../../components/date"
 import utilStyles from '../../styles/utils.module.css'
 import styled from "styled-components"
 import Sidebar from '../Sidebar'
+import 'react-pro-sidebar/dist/css/styles.css';
 
 const Container = styled.div`
   display: inline-block;
