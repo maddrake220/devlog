@@ -1,8 +1,17 @@
 ---
-title: "a태그 test"
+title: "태그, 링크 태스트"
 date: "2021-05-24"
 image: "/images/4444.jpg"
 description: "Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page."
+link:
+  [
+    { id: "#head1234", name: "A heading here!" },
+    { id: "#head1235", name: "A heading here!" },
+    { id: "#head1236", name: "A heading here!" },
+    { id: "#head1237", name: "A heading here!" },
+    { id: "#head1234", name: "A heading here!" },
+  ]
+tag: ["React", "ES6", "styled-components"]
 ---
 
 ### <a name="head1234"></a> A heading here!

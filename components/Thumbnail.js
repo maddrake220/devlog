@@ -46,30 +46,29 @@ const SDate = styled.div`
     right : 6px;
     position:absolute;
 `;
-const CategoryContainer = styled.div`
+const TagContainer = styled.div`
     margin: 1rem;
 `;
 
-const Category = styled.div`
-    background-color: #ebfbff;
+const Tag = styled.div`
+    background-color: black;
+    color: white;
     display: inline-block;
     box-sizing: border-box;
     padding: 3px;
     margin-right: 10px;
     border-radius: 10px;
     box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
-
 `;
 
 const AStyle = styled.a`
-
     &:hover{
         text-decoration: none;
         cursor:pointer;
     }
 `;
 
-const Thumbnail = ({id, image, title, year, content, category}) => 
+const Thumbnail = ({id, image, title, year, content, tag}) => 
     
           
             <Container>
@@ -88,11 +87,12 @@ const Thumbnail = ({id, image, title, year, content, category}) =>
                     </ImageContainer>
                     </AStyle>
                 </Link>
-                    <CategoryContainer>{category && category.map((item, index) => (
-                        
-                            <Category>{item}</Category>
+                    <TagContainer>{tag && tag.map((item, index) => (
+                        <Link href={`/tags/${item}`}>
+                          <a><Tag>{item}</Tag></a>
+                        </Link>
                     ))}
-                    </CategoryContainer>
+                    </TagContainer>
                 <SDate>
                     <Date dateString={year}/>
                 </SDate>
@@ -109,7 +109,7 @@ Thumbnail.propTypes = {
     title: PropTypes.string.isRequired,
     year: PropTypes.string,
     content: PropTypes.string,
-    category: PropTypes.array
+    tag: PropTypes.array
 }
 
 export default Thumbnail;

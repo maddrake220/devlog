@@ -5,8 +5,20 @@ import styled from "styled-components"
 
 const Container = styled.div`
   width: 100%;
-  padding: 3rem 22rem;
+`;
 
+const Backdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/posts.jpg");
+  background-position: center center;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: 0;
+  opacity: 0.7;
 `;
 
 export async function getStaticProps() {
@@ -21,16 +33,16 @@ export async function getStaticProps() {
 export default function Posts({ allPostsData }) {
     return (
       <Container>
-              <h2>포스트</h2>
+        <Backdrop/>
                 <Section>
-                  {allPostsData && allPostsData.map(({ id, date, title, image, description, category }) => (
+                  {allPostsData && allPostsData.map(({ id, date, title, image, description, tag, link }) => (
                     <Thumbnail 
                       id={id}
                       year={date}
                       title={title}
                       image={image}
                       content={description}
-                      category={category? category : ""}
+                      tag={tag? tag : ""}
                       />
                       
                   ))}
