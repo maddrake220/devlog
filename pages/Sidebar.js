@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Image from 'next/image'
 import {
   ProSidebar,
   Menu,
@@ -52,20 +51,27 @@ const Sidebar = () => {
                 >
                     <Link href="/"> 
                     <a>
-                        Home
+                        홈
                     </a>
                     </Link>
                 </MenuItem>
         </Menu>
+
         <Menu iconShape="circle">
-          <MenuItem
-            icon={<FaTachometerAlt />}
-            suffix={<span className="badge red">new</span>}
-          >
-            dashboard
+          
+          <MenuItem icon={<FaGem />}
+          suffix={<span className="badge red">new</span>}>
+              <Link href="/posts"> 
+                  <a>
+                     포스트
+                  </a>
+              </Link>
           </MenuItem>
-          <MenuItem icon={<FaGem />}> components</MenuItem>
+          <MenuItem icon={<FaList />}> 태그</MenuItem>
+          <MenuItem icon={<FaRegLaughWink />}>프로젝트</MenuItem>
+          <MenuItem icon={<FaHeart />}> 내 소개</MenuItem>
         </Menu>
+
         <Menu iconShape="circle">
           
         </Menu>
@@ -75,9 +81,8 @@ const Sidebar = () => {
         <div
           className="sidebar-btn-wrapper"
           style={{
-            padding: '20px 24px',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis'
+            padding: '20px 28px',
+            overflow: 'hidden'
           }}
         >
           <a

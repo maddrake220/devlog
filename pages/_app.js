@@ -6,7 +6,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 const SidebarContainer = styled.div`
     position: fixed;
     height: 100%;
-    z-index: 10;
+    z-index: 12;
 `;
 
 export default function App({ Component, pageProps }) {

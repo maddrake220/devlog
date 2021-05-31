@@ -1,9 +1,11 @@
 ---
-title: "NomadCode 코드챌린지 #1"
+title: "a태그 test"
 date: "2021-05-24"
 image: "/images/4444.jpg"
 description: "Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page."
 ---
+
+### <a name="head1234"></a> A heading here!
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
 
@@ -28,3 +30,22 @@ end code block.
 
 Importantly, Next.js lets you **choose** which pre-rendering form to use for each page.  
 You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+
+- **Static Generation** is the pre-rendering method that generates the HTML at **build time**. The pre-rendered HTML is then _reused_ on each request.
+- **Server-side Rendering** is the pre-rendering method that generates the HTML on **each request**.
+
+Importantly, Next.js lets you **choose** which pre-rendering form to use for each page.  
+You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+
+- **Static Generation** is the pre-rendering method that generates the HTML at **build time**. The pre-rendered HTML is then _reused_ on each request.
+- **Server-side Rendering** is the pre-rendering method that generates the HTML on **each request**.
+
+Importantly, Next.js lets you **choose** which pre-rendering form to use for each page.  
+You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+
+- **Static Generation** is the pre-rendering method that generates the HTML at **build time**. The pre-rendered HTML is then _reused_ on each request.
+- **Server-side Rendering** is the pre-rendering method that generates the HTML on **each request**.
+
+Importantly, Next.js lets you **choose** which pre-rendering form to use for each page.  
+You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+and we can even [link](#head1234) to it so:

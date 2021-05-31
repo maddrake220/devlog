@@ -6,10 +6,13 @@ import utilStyles from '../../styles/utils.module.css'
 import styled from "styled-components"
 
 const Container = styled.div`
-  display: inline-block;
-  padding-left: 10rem;
-  padding-right: 10rem;
-  padding-top: 3rem;
+  width: 100%;
+  padding-top: 6rem;
+`;
+
+const PostContainer = styled.div`
+  padding-left: 30rem;
+  padding-right: 30rem;
 `;
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id)
@@ -30,10 +33,8 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
     return (
-      <>
-      
-      <Layout>
         <Container>
+          <PostContainer>
             <Head>
                 <title>{postData.title}</title>
             </Head>
@@ -46,9 +47,8 @@ export default function Post({ postData }) {
                 <div dangerouslySetInnerHTML={{__html: postData.contentHtml }} />
           
             </article>
+          </PostContainer>
         </Container>
-      </Layout>
-      </>
     )
   }
 
