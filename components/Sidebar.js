@@ -8,7 +8,7 @@ import {
   SidebarFooter,
   SidebarContent
 } from 'react-pro-sidebar';
-import { FaToggleOff, FaToggleOn, FaHome, FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { FaToggleOff, FaToggleOn, FaHome,  FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Sidebar = () => {
@@ -59,7 +59,7 @@ const Sidebar = () => {
 
         <Menu iconShape="circle">
           
-          <MenuItem icon={<FaGem />}
+          <MenuItem icon={<FaHeart />}
           suffix={<span className="badge red">new</span>}>
               <Link href="/posts"> 
                   <a>
@@ -67,14 +67,8 @@ const Sidebar = () => {
                   </a>
               </Link>
           </MenuItem>
-          <MenuItem icon={<FaList />}> 
-          <Link href="/tags"> 
-                  <a>
-                     태그
-                  </a>
-              </Link></MenuItem>
-          <MenuItem icon={<FaRegLaughWink />}>프로젝트</MenuItem>
-          <MenuItem icon={<FaHeart />}> 내 소개</MenuItem>
+          <MenuItem icon={<FaGem />}>프로젝트</MenuItem>
+          <MenuItem icon={<FaRegLaughWink />}>소개</MenuItem>
         </Menu>
 
         <Menu iconShape="circle">

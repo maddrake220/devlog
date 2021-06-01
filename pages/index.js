@@ -42,6 +42,17 @@ const SInput = styled.input`
             outline:none;
 }`;
 
+const NameInput = styled.input`
+  margin-left: 8px;
+  font-size : 64px;
+  width: 500px;
+  border: none;
+  border-bottom: 2px solid green;
+  background: transparent;
+  &:focus{
+            outline:none;
+}`;
+
 const Todolist = styled.div`
   position: relative;
   width: 100%;
@@ -69,6 +80,8 @@ const Li = styled.li`
 
 export default function Home() {
   const [NewToDo, setNewToDo] = useState("")
+  const [Name, setName] = useState("")
+  const [NewName, setNewName] = useState("")
   const [ToDo, setToDo] = useState([])
 
   const onSubmit = e => {
@@ -82,11 +95,23 @@ export default function Home() {
     setNewToDo("");
   };
 
+  const onSubmitName = e => {
+    e.preventDefault();
+    setName(NewName)
+  };
+
   const onChange = e => {
     const {
       target: { value }
     } = e;
     setNewToDo(value);
+  };
+
+  const onChangeName = e => {
+    const {
+      target: { value }
+    } = e;
+    setNewName(value);
   };
 
   const removeHandler = (id) => {
@@ -97,7 +122,14 @@ export default function Home() {
     <Container>
       <Backdrop />
       <Content>
-          <Hello>Hello, Jaewon.</Hello>
+      <form  onSubmit={onSubmitName}>
+          <Hello>Hello, 
+            {Name.length === 0 
+             ? <NameInput value={NewName} type="text" placeholder="Anonymous" onChange={onChangeName}></NameInput>
+             : Name
+             }
+          </Hello>
+          </form>
           <Hello>What are you up to today?</Hello>
           <form onSubmit={onSubmit}>
             <SInput 
