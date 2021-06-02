@@ -25,7 +25,6 @@ const Title = styled.div`
 const Description = styled.div`
     color: grey;
     font-size: 12px;
-    margin-left: 1rem;
     margin-bottom: 11px;
 `;
 
@@ -88,9 +87,7 @@ const Thumbnail = ({id, image, title, year, content, tag}) =>
                     </AStyle>
                 </Link>
                     <TagContainer>{tag && tag.map((item, index) => (
-                        <Link href={`/tags/${item}`}>
-                          <a><Tag>{item}</Tag></a>
-                        </Link>
+                          <Tag>{item}</Tag>
                     ))}
                     </TagContainer>
                 <SDate>

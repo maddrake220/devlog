@@ -3,16 +3,16 @@ import { getSortedPostsData } from '../../lib/posts'
 import Section from "../../components/Section"
 import Thumbnail from '../../components/Thumbnail'
 import styled from "styled-components"
-import Link from "next/link"
 const Container = styled.div`
+  position: relative;
   width: 100%;
 `;
 
 const PostContainer = styled.div`
-  position: relative;
+  text-align: center;
+  margin-left: 15rem;
   z-index: 10;
-  width: 70%;
-  margin-left: 20rem;
+  width: auto;
 `;
 const Backdrop = styled.div`
   position: fixed;
@@ -30,6 +30,7 @@ const Backdrop = styled.div`
 
 const Title = styled.div`
   padding-top: 5rem;
+  margin-right: 10rem;
   font-size: 30px;
 `;
 const Items = styled.div`
@@ -134,7 +135,9 @@ export default function Posts({ allPostsData }) {
               
                 
         </PostContainer>
+        
       </Container>
+      
       </>
     )
   }

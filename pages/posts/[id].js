@@ -1,16 +1,15 @@
-import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import Link from 'next/link'
 import Date from "../../components/date"
-import utilStyles from '../../styles/utils.module.css'
 import styled from "styled-components"
-
 const Container = styled.div`
   display: flex;
 `;
 
-
+const Footer = styled.div`
+  margin-top: 20rem;
+`;
 const Hr = styled.hr`
   float: left;
   width: 70%;
@@ -82,6 +81,7 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
     return (
+      <>
         <Container>
           <PostContainer>
             
@@ -92,10 +92,8 @@ export default function Post({ postData }) {
             <Title>
               {postData.title}
             </Title>
-            <TagContainer>{postData.tag && postData.tag.map((item, index) => (
-                      <Link href={`/tags/${item}`}>
-                        <a><Tag>{item}</Tag></a>
-                      </Link>
+            <TagContainer>{postData.tag && postData.tag.map((item, index) => ( 
+                        <Tag>{item}</Tag>
                 ))}
                 </TagContainer>
             <SDate >
@@ -118,6 +116,10 @@ export default function Post({ postData }) {
             </Linktext>
           </LinkContainer>
         </Container>
+        <Footer>
+
+        </Footer>
+        </>
     )
   }
 

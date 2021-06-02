@@ -25,6 +25,7 @@ const Sidebar = () => {
   return (
     
     <ProSidebar
+      image={"/images/bg1.jpg"}
       collapsed={collapse}
       toggled={toggle}
       breakPoint="md"
@@ -67,8 +68,18 @@ const Sidebar = () => {
                   </a>
               </Link>
           </MenuItem>
-          <MenuItem icon={<FaGem />}>프로젝트</MenuItem>
-          <MenuItem icon={<FaRegLaughWink />}>소개</MenuItem>
+          <MenuItem icon={<FaGem />}>
+               <Link href="/projects"> 
+                  <a>
+                     프로젝트
+                  </a>
+               </Link></MenuItem>
+          <MenuItem icon={<FaRegLaughWink />}>
+                <Link href="/todolist"> 
+                  <a>
+                     ToDoList
+                  </a>
+               </Link></MenuItem>
         </Menu>
 
         <Menu iconShape="circle">

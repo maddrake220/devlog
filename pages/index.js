@@ -1,154 +1,61 @@
-import React, {useState} from "react"
+import React from "react"
 import styled from "styled-components"
-import {v4 as uuid} from "uuid"
-import ToDolist from "../components/ToDolist"
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const Container = styled.div`
-  height: calc(100vh);
   width: 100%;
+  margin-left: 10rem;
+`;
+const Main = styled.div`
   text-align: center;
+  padding-top: 5rem;
+  width: 100%;
+`;
+const Title= styled.div`
+  font-size: 48px;
+  font-weight: 800;
 `;
 
+const Footer = styled.div`
+  padding-top: 10rem;
+`;
 const Backdrop = styled.div`
-  position: absolute;
+  position: fixed;
+  
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("images/background.jpg");
+  background-image: url("images/84533.jpg");
   background-position: center center;
   background-size: cover;
   z-index: 0;
 `;
-const Content = styled.div`
-  position: relative;
-  padding-top: 5rem;
-  width: 100%;
-  height: 40%;
-  z-index: 1;
-`;
-
-const Hello = styled.div`
-  font-size: 64px;
-  font-weight: 900;
-`;
-
-const SInput = styled.input`
-  padding-top: 2rem;
-  font-size : 40px;
-  border: none;
-  border-bottom: 2px solid green;
-  background: transparent;
-  &:focus{
-            outline:none;
-}`;
-
-const NameInput = styled.input`
-  margin-left: 8px;
-  font-size : 64px;
-  width: 500px;
-  border: none;
-  border-bottom: 2px solid green;
-  background: transparent;
-  &:focus{
-            outline:none;
-}`;
-
-const Todolist = styled.div`
-  position: relative;
-  width: 100%;
-  height: 60%;
-  padding-top: 1.5rem;
-`;
-const Ul = styled.ul`
-  list-style: none;
-  text-align: justify;
-  display: inline-block;
-  padding: 0px 5px 6px 0px;
-  width: 100%;
-  height: 100%;
-  max-width: 250px;
-  max-height: 200px;
-`;
-
-const Li = styled.li`
-    margin-bottom: 5px;
-    border-bottom: 1px solid blueviolet;
-    &:last-child{
-      border-bottom: 0px;
-    }
-`;
-
 export default function Home() {
-  const [NewToDo, setNewToDo] = useState("")
-  const [Name, setName] = useState("")
-  const [NewName, setNewName] = useState("")
-  const [ToDo, setToDo] = useState([])
-
-  const onSubmit = e => {
-    e.preventDefault();
-    if(ToDo.length >10) {
-      alert("ToDo list Limit")
-      return false
-    } else {
-      setToDo([...ToDo, [NewToDo, uuid()]])
-    }
-    setNewToDo("");
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
   };
-
-  const onSubmitName = e => {
-    e.preventDefault();
-    setName(NewName)
-  };
-
-  const onChange = e => {
-    const {
-      target: { value }
-    } = e;
-    setNewToDo(value);
-  };
-
-  const onChangeName = e => {
-    const {
-      target: { value }
-    } = e;
-    setNewName(value);
-  };
-
-  const removeHandler = (id) => {
-    
-    setToDo(ToDo.filter(item=> item[1] !== id))
-  }
   return (
+    <>
     <Container>
-      <Backdrop />
-      <Content>
-      <form  onSubmit={onSubmitName}>
-          <Hello>Hello, 
-            {Name.length === 0 
-             ? <NameInput value={NewName} type="text" placeholder="Anonymous" onChange={onChangeName}></NameInput>
-             : Name
-             }
-          </Hello>
-          </form>
-          <Hello>What are you up to today?</Hello>
-          <form onSubmit={onSubmit}>
-            <SInput 
-                value={NewToDo}
-                type="text"
-                placeholder="Write to do"
-                onChange={onChange}/>
-          </form>
-      </Content>
-      <Todolist>
-        {ToDo.length === 0 ? "" : <Hello> ToDo List</Hello>}
-        
-          <Ul>
-            {ToDo.length > 0 ? ToDo.map(item => (
-              <Li> <ToDolist id={item[1]} text={item[0]} removeItem={removeHandler} /></Li>
-            ))
-            : ""}
-          </Ul>
-      </Todolist>
+        <Title>
+            Welcome 
+        </Title>
+          <Slider  {...settings}>
+            <div><h2>1</h2></div>
+            <div>2</div>
+            <div>3</div>
+          </Slider>
     </Container>
+    <Footer>
+
+    </Footer>
+    </>
   )
 }
