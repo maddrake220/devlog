@@ -135,7 +135,7 @@ export default function Posts({ allPostsData }) {
                   ))}
             </Section>
           ) : (
-            <Section>
+            <Section imagesize="340px">
               {allPostsData &&
                 allPostsData.map((value) => (
                   <Thumbnail

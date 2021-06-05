@@ -44,9 +44,14 @@ const Container = styled.div`
 
 const Devlog = styled.div`
   font-size: 36px;
+  font-weight: 800;
   bottom: 10;
   float: left;
   display: flex;
+
+  &:hover {
+    text-decoration: none;
+  }
 `;
 
 const SLink = styled(Link)`
@@ -55,15 +60,11 @@ const SLink = styled(Link)`
   align-items: center;
   justify-content: center;
   font-size: 17px;
-  &:hover {
-    color: RED;
-    text-decoration: none;
-    opacity: 0.9;
-  }
 `;
 
 const RightMenu = styled.div`
   visibility: visible;
+  font-weight: 500;
   margin-top: 30px;
   display: flex;
   float: right;
@@ -72,6 +73,13 @@ const RightMenu = styled.div`
   }
 `;
 
+const StyledA = styled.a`
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.8;
+  }
+`;
 const MenuIcon = styled.div`
   visibility: hidden;
   @media (max-width: 835px) {
@@ -94,7 +102,7 @@ function myHeader({ router }) {
       <Container>
         <Devlog>
           <SLink href="/">
-            <a>Jaewon's Devlog</a>
+            <StyledA>Jaewon's Devlog</StyledA>
           </SLink>
         </Devlog>
         <RightMenu>
@@ -102,27 +110,27 @@ function myHeader({ router }) {
             <FaList />
           </MenuIcon>
           <SLink href="/about">
-            <a>
+            <StyledA>
               <Menu>ABOUT </Menu>
-            </a>
+            </StyledA>
           </SLink>
 
           <SLink href="/portfolio">
-            <a>
+            <StyledA>
               <Menu>PORTFOLIO</Menu>
-            </a>
+            </StyledA>
           </SLink>
 
           <SLink href="/posts">
-            <a>
+            <StyledA>
               <Menu>BLOG</Menu>
-            </a>
+            </StyledA>
           </SLink>
 
           <SLink href="/contact">
-            <a>
+            <StyledA>
               <Menu>CONTACT</Menu>
-            </a>
+            </StyledA>
           </SLink>
         </RightMenu>
       </Container>
