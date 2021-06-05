@@ -1,22 +1,22 @@
-import "../styles/globals.css"
-import Sidebar from "../components/Sidebar"
-import styled from "styled-components"
-import 'react-pro-sidebar/dist/css/styles.css';
-
-const SidebarContainer = styled.div`
-    position: fixed;
-   height: 100%;
-    display: flex;
-    z-index: 12;
+import "../styles/globals.css";
+import Header from "../components/Header";
+import styled from "styled-components";
+const Footer = styled.div`
+  opacity: 0.5;
+  position: relative;
+  text-align: center;
+  margin-top: 10rem;
+  bottom: 0;
+  width: 100%;
 `;
+const Container = styled.div``;
 
 export default function App({ Component, pageProps }) {
-    return (
-      <>
-        <SidebarContainer>
-          <Sidebar/>
-        </SidebarContainer>
-          <Component {...pageProps} />
-      </>
-    )
-  }
+  return (
+    <Container>
+      <Header />
+      <Component {...pageProps} />
+      <Footer>Jaewon's Devlog @Copyright All Rights Reserved</Footer>
+    </Container>
+  );
+}
