@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { withRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
@@ -10,8 +10,6 @@ const Header = styled.header`
   top: 0;
   left: 0;
   z-index: 10;
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
   box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
 
   display: -webkit-box; /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
@@ -35,6 +33,11 @@ const Header = styled.header`
   margin: 0;
   height: 120px;
   width: 100%; /* needed for Firefox */
+
+  height: ${(props) => (props.isTop ? "120px" : "60px")};
+
+  -webkit-backdrop-filter: blur(${(props) => (props.isTop ? "0px" : "15px")});
+  backdrop-filter: blur(${(props) => (props.isTop ? "0px" : "15px")});
 `;
 const Container = styled.div`
   display: inline-block;
@@ -97,8 +100,19 @@ const Menu = styled.span`
 export default withRouter(myHeader);
 
 function myHeader({ router }) {
+  const [HeaderPostion, setHeaderPostion] = useState(true);
+
+  const handlescroll = (e) => {
+    setHeaderPostion(window.pageYOffset > 0 ? false : true);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handlescroll);
+    return () => {
+      window.removeEventListener("scroll", handlescroll);
+    };
+  }, []);
   return (
-    <Header>
+    <Header isTop={HeaderPostion}>
       <Container>
         <Devlog>
           <SLink href="/">

@@ -9,7 +9,6 @@ const Container = styled.div`
   }
 `;
 
-/* :not(:last-child) : 마지막 children에게는 ~하지 않는다*/
 const Grid = styled.div`
   border-radius: 2px;
   margin-top: 2;

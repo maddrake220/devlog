@@ -75,7 +75,11 @@ const Thumbnail = ({ id, image, title, year, content, tag }) => (
         <ImageContainer>
           <SImage priority src={image} width={344} height={244} />
           <Title>{title}</Title>
-          <Description>{content && content.substring(0, 136)}...</Description>
+          <Description>
+            {content && content.length > 136
+              ? `${content.substring(0, 136)}...`
+              : content}
+          </Description>
         </ImageContainer>
       </AStyle>
     </Link>

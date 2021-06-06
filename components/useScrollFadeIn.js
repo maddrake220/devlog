@@ -29,6 +29,7 @@ const useScrollFadeIn = (direction = "down", duration = 1, delay = 0.2) => {
         current.style.transform = "translate3d(0, 0, 0)";
         current.style.transitionTimingFunction = "ease-in-out";
         current.style.width = "100%";
+        current.style.height = "100%";
       }
     },
     [delay, duration]
