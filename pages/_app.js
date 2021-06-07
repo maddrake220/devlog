@@ -9,14 +9,13 @@ const Footer = styled.div`
   bottom: 0;
   width: 100%;
 `;
-const Container = styled.div``;
 
 export default function App({ Component, pageProps }) {
   return (
-    <Container>
+    <div id="root">
       <Header />
       <Component {...pageProps} />
       <Footer>Jaewon's Devlog @Copyright All Rights Reserved</Footer>
-    </Container>
+    </div>
   );
 }

@@ -16,7 +16,7 @@
       Contact link
 - [x] Home 구현:
       About 요약,
-      포트폴리오 요약,
+      포트폴리오 요약 => modal창 추가,
       Blog 요약
 - [x] 포스트 디테일에서 리모콘 구현
 - [x] Tag 별 sorting 구현
