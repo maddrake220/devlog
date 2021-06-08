@@ -1,3 +1,66 @@
+export const Stacks = [
+  {
+    title: "HTML5",
+    image: "html.webp",
+    rate: "7",
+  },
+  {
+    title: "CSS3",
+    image: "css3.webp",
+    rate: "6",
+  },
+  {
+    title: "JavaScript",
+    image: "js.webp",
+    rate: "7",
+  },
+  {
+    title: "TypeScript",
+    image: "ts.webp",
+    rate: "4",
+  },
+  {
+    title: "React",
+    image: "react.webp",
+    rate: "8",
+  },
+  {
+    title: "Next.js",
+    image: "nextjs.webp",
+    rate: "5",
+  },
+  {
+    title: "Redux",
+    image: "redux.webp",
+    rate: "5",
+  },
+  {
+    title: "Apollo",
+    image: "apollo.webp",
+    rate: "4",
+  },
+  {
+    title: "styled Components",
+    image: "styled.webp",
+    rate: "7",
+  },
+  {
+    title: "Node.js",
+    image: "nodejs.webp",
+    rate: "2",
+  },
+  {
+    title: "express.js",
+    image: "express.webp",
+    rate: "2",
+  },
+  {
+    title: "GraphQL",
+    image: "graphql.webp",
+    rate: "3",
+  },
+];
+
 export const Projects = [
   {
     title: "Devlog",

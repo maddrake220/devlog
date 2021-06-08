@@ -40,7 +40,7 @@ const Content = styled.div`
 const Title = styled.div`
   display: inline-block;
   width: 42%;
-  padding-top: 20rem;
+  padding-top: 25rem;
   font-size: 28px;
   font-weight: 800;
 

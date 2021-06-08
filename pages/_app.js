@@ -1,13 +1,12 @@
 import "../styles/globals.css";
 import Header from "../components/Header";
 import styled from "styled-components";
-const Footer = styled.div`
-  opacity: 0.5;
-  position: relative;
+const Footer = styled.footer`
+  margin-top: 15rem;
+  padding-top: 10rem;
+  background-color: #0c2c52;
   text-align: center;
-  margin-top: 10rem;
-  bottom: 0;
-  width: 100%;
+  color: #abb6c4;
 `;
 
 export default function App({ Component, pageProps }) {
