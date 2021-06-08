@@ -129,6 +129,8 @@ export default function Home({ allPostsData }) {
                   fontcolor={project.fontcolor}
                   image={project.image}
                   homepage={project.homepage}
+                  isHome={true}
+                  stacks={project.stacks}
                 />
               ))}
           </Section>

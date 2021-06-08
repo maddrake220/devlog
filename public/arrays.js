@@ -71,6 +71,7 @@ export const Projects = [
     fontcolor: "#0070f3",
     homepage: "https://devlog-maddrake.vercel.app/",
     image: "devlog.jpg",
+    stacks: ["React", "Next.js", "JavaScript", "Styled Components"],
   },
   {
     title: "Madflix",
@@ -80,6 +81,7 @@ export const Projects = [
     description: "Nomad Coder 영화 정보 WEB 코드 챌린지",
     homepage: "https://madflix.netlify.app/",
     image: "madflix.jpg",
+    stacks: ["React", "YT iframe API", "JavaScript", "Styled Components"],
   },
   {
     title: "Madzon",
@@ -90,6 +92,7 @@ export const Projects = [
     fontcolor: "white",
     homepage: "https://madzon.herokuapp.com/",
     image: "11.jpg",
+    stacks: ["React", "Redux", "JavaScript", "ANTD", "Node.js", "Express.js"],
   },
   {
     title: "ToDo List",
@@ -100,6 +103,7 @@ export const Projects = [
     fontcolor: "yellow",
     homepage: "https://naver.com",
     image: "11.jpg",
+    stacks: ["React"],
   },
 ];
 

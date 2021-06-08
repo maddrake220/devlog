@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Section from "../../components/Section";
 import { Abouts, Stacks } from "../../public/arrays";
 const Container = styled.div`
-  margin-top: 10rem;
+  margin-top: 7rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -20,13 +20,13 @@ const Content = styled.div`
 const AboutContainer = styled.div``;
 
 const StackContainer = styled.div`
-  padding-top: 10rem;
+  padding-top: 4rem;
 `;
 
 const Resume = styled.div`
   font-size: 15px;
   font-weight: 600;
-  padding-top: 10rem;
+  padding-top: 4rem;
   display: flex;
 `;
 
@@ -75,6 +75,7 @@ function index() {
 
         <StackContainer>
           <h2>기술 스택</h2>
+          <br />
           <Section paddingleft="2rem" imagesize="120px">
             {Stacks &&
               Stacks.map((stack) => (
@@ -87,7 +88,8 @@ function index() {
               ))}
           </Section>
         </StackContainer>
-
+        <div style={{ padding: "3rem" }} />
+        <h2>경험</h2>
         <Resume>
           <Photo />
           <Grid>
@@ -95,18 +97,31 @@ function index() {
               <Item>2011.03 ~ 2018.02</Item>
               <Item>인천대학교 컴퓨터 공학 졸업</Item>
             </ItemContainer>
+
+            <ItemContainer>
+              <Item>2016.03 ~ 2018.02</Item>
+              <Item>인천대학교 데이터베이스 연구실</Item>
+            </ItemContainer>
+
             <ItemContainer>
               <Item>2018.04 ~ 2019.04</Item>
               <Item>미국 오하이오주 USHair It Engineer 인턴</Item>
             </ItemContainer>
+
             <ItemContainer>
-              <Item>SQLD 자격증</Item>
-              <Item>정보처리기사 자격증</Item>
+              <Item>2021.01 ~</Item>
+              <Item>JS, html, css 웹표준 등 프론트 공부 </Item>
             </ItemContainer>
 
             <ItemContainer>
-              <Item>프론트엔드 공부</Item>
-              <Item>각종 프로젝트 개발 진행중... </Item>
+              <Item>2021.04 ~</Item>
+              <Item>개인 프로젝트 진행 </Item>
+            </ItemContainer>
+
+            <ItemContainer>
+              <Item>보유 자격증: </Item>
+              <Item>SQLD 자격증 ,</Item>
+              <Item>정보처리기사 자격증</Item>
             </ItemContainer>
           </Grid>
         </Resume>

@@ -6,7 +6,7 @@ import Link from "next/link";
 const Project = styled.div`
   position: relative;
   width: 100%;
-  height: 110px;
+  height: ${(props) => (props.isHome ? "110px" : "150px")};
   border-radius: 10px;
   box-sizing: content-box;
   display: flex;
@@ -22,6 +22,10 @@ const Project_Image = styled.div`
   color: ${(props) => (props.fontcolor ? props.fontcolor : "red")};
   position: relative;
   text-align: center;
+
+  background-image: url(${(props) => `/images/${props.image}`});
+  background-position: center center;
+  background-size: cover;
   background-color: black;
   left: 2%;
   top: 20%;
@@ -90,16 +94,22 @@ const Portfolio_Modal_title = styled.div`
 `;
 const Portfolio_Modal_description = styled.div`
   position: relative;
+  margin-top: 3rem;
   font-size: 21px;
   font-weight: 400;
 `;
 
+const Stack = styled.div`
+  position: absolute;
+  bottom: 0;
+  font-size: 16px;
+  font-weight: 500;
+`;
 const SiteUrl = styled.h2`
   font-size: 16px;
 `;
 Modal.setAppElement("#root");
 const Portfolio = (Props) => {
-  console.log(Props.image);
   const [IsOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -135,9 +145,13 @@ const Portfolio = (Props) => {
   };
   return (
     <div>
-      <Project onClick={openModal}>
-        <Project_Image fontcolor={Props.fontcolor}>
-          <Project_Title>{Props.title}</Project_Title>
+      <Project isHome={Props.isHome} onClick={openModal}>
+        <Project_Image
+          isHome={Props.isHome}
+          image={Props.image}
+          fontcolor={Props.fontcolor}
+        >
+          <Project_Title>{Props.isHome ? Props.title : ""}</Project_Title>
         </Project_Image>
         <Project_Info0>
           <Project_Info>{Props.info}</Project_Info>
@@ -166,6 +180,16 @@ const Portfolio = (Props) => {
                   <SiteUrl>{Props.homepage}</SiteUrl>
                 </a>
               </Link>
+            </div>
+            <div>
+              <Stack>
+                {Props.stacks &&
+                  Props.stacks.map((stack, index) => (
+                    <span>
+                      {index < Props.stacks.length - 1 ? `${stack}, ` : stack}
+                    </span>
+                  ))}
+              </Stack>
             </div>
           </Portfolio_Modal_title>
         </Portfolio_Modal>

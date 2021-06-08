@@ -15,6 +15,8 @@ link:
 
 ### <a name="map"></a>
 
+<br/><br/><br/>
+
 **map()**
 
 Syntax: currentValue, index, array
@@ -48,6 +50,8 @@ fetching한 data 정렬할 때, 배열 요소에 특정 처리를 하는 등 배
 
 ### <a name="filter"></a>
 
+<br/><br/><br/>
+
 **filter()**
 
 Syntax: currentValue, index, array
@@ -75,6 +79,8 @@ Syntax: currentValue, index, array
 
 ### <a name="reduce"></a>
 
+<br/><br/><br/>
+
 **reduce()**
 
 reduce 는 빈 요소를 제외한 배열 내에 존재하는 각 요소에 대해 콜백함수를 실행하여 마지막 호출된 하나의 값을 도출합니다.  
@@ -100,6 +106,8 @@ includes함수를 같이 사용하여 중복을 제거하는 예제 입니다.
 </pre>
 
 ### <a name="filter&reduce"></a>
+
+<br/><br/><br/>
 
 **filter()와 reduce()동시 사용하기**
 
