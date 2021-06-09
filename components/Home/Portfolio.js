@@ -16,6 +16,10 @@ const Project = styled.div`
     box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.3);
     cursor: pointer;
   }
+
+  @media (max-width: 835px) {
+    width: 75%;
+  }
 `;
 
 const Project_Image = styled.div`
@@ -67,6 +71,9 @@ const Project_Description = styled.div`
   bottom: 6px;
   width: 20%;
   height: 80%;
+  @media (max-width: 835px) {
+    visibility: hidden;
+  }
 `;
 
 const Portfolio_Modal = styled.div`

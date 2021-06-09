@@ -117,7 +117,7 @@ export default function Posts({ allPostsData }) {
               ))}
           </Items>
           {isFilter ? (
-            <Section>
+            <Section imagesize="340px">
               {allPostsData &&
                 allPostsData
                   .filter((element) => {

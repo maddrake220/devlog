@@ -4,6 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 import { FaList } from "react-icons/fa";
+import Modal from "react-modal";
 
 const Header = styled.header`
   position: fixed;
@@ -55,6 +56,9 @@ const Devlog = styled.div`
   &:hover {
     text-decoration: none;
   }
+  @media (max-width: 835px) {
+    margin-top: 40px;
+  }
 `;
 
 const SLink = styled(Link)`
@@ -85,6 +89,7 @@ const StyledA = styled.a`
 `;
 const MenuIcon = styled.div`
   visibility: hidden;
+  cursor: pointer;
   @media (max-width: 835px) {
     position: absolute;
     top: 1rem;
@@ -93,17 +98,38 @@ const MenuIcon = styled.div`
   }
 `;
 
+const LinkContainer = styled.div`
+  font-size: 25px;
+  font-weight: 700;
+  padding: 2rem 3rem 0 3rem;
+`;
+
 const Menu = styled.span`
   margin-left: 20px;
 `;
 
+Modal.setAppElement("#root");
 export default withRouter(myHeader);
 
 function myHeader({ router }) {
   const [HeaderPostion, setHeaderPostion] = useState(true);
-
+  const [IsOpen, setIsOpen] = useState(false);
+  const MenuHandler = (e) => {
+    console.log("sdf");
+  };
   const handlescroll = (e) => {
     setHeaderPostion(window.pageYOffset > 0 ? false : true);
+  };
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+    overlay: { zIndex: 1000 },
   };
   useEffect(() => {
     window.addEventListener("scroll", handlescroll);
@@ -111,6 +137,18 @@ function myHeader({ router }) {
       window.removeEventListener("scroll", handlescroll);
     };
   }, []);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
     <Header isTop={HeaderPostion}>
       <Container>
@@ -121,7 +159,36 @@ function myHeader({ router }) {
         </Devlog>
         <RightMenu>
           <MenuIcon>
-            <FaList />
+            <FaList onClick={openModal} />
+            <Modal
+              isOpen={IsOpen}
+              onAfterOpen={afterOpenModal}
+              onRequestClose={closeModal}
+              style={customStyles}
+              contentLabel="Example Modal"
+            >
+              <LinkContainer>
+                <Link href={"/about"}>
+                  <StyledA onClick={closeModal}>ABOUT</StyledA>
+                </Link>
+              </LinkContainer>
+              <LinkContainer>
+                <Link href={"/portfolio"}>
+                  <StyledA onClick={closeModal}>PORTFOLIO</StyledA>
+                </Link>
+              </LinkContainer>
+              <LinkContainer>
+                <Link href={"/posts"}>
+                  <StyledA onClick={closeModal}>BLOG</StyledA>
+                </Link>
+              </LinkContainer>
+              <LinkContainer>
+                <Link href={"/contact"}>
+                  <StyledA onClick={closeModal}>CONTACT</StyledA>
+                </Link>
+              </LinkContainer>
+              <br />
+            </Modal>
           </MenuIcon>
           <SLink href="/about">
             <StyledA>

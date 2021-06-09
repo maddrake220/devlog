@@ -73,6 +73,24 @@ const settings = {
   autoplaySpeed: 5000,
   prevArrow: <GrPrevious />,
   nextArrow: <GrNext />,
+  responsive: [
+    {
+      breakpoint: 1505,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+      },
+    },
+    {
+      breakpoint: 835,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+      },
+    },
+  ],
 };
 
 const Pofol = styled.div`
