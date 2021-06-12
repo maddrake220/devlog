@@ -27,8 +27,19 @@ const Description = styled.div`
   margin-bottom: 11px;
 `;
 
-const SImage = styled(Image)`
+const Ima = styled.div`
   border-radius: 10px;
+  background-color: black;
+  height: 200px;
+`;
+const SImage = styled.div`
+  position: relative;
+  background-image: url(${(props) => props.image});
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
 `;
 
 const ImageContainer = styled.div`
@@ -73,7 +84,9 @@ const Thumbnail = ({ id, image, title, year, content, tag }) => (
     <Link href={`/posts/${id}`}>
       <AStyle>
         <ImageContainer>
-          <SImage priority src={image} width={344} height={244} />
+          <Ima>
+            <SImage image={image ? image : "images/11.jpg"} />
+          </Ima>
           <Title>{title}</Title>
           <Description>
             {content && content.length > 136

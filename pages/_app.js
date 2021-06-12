@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Footer = styled.footer`
   margin-top: 15rem;
   padding-top: 10rem;
-  background-color: #0c2c52;
+  background-color: #020715;
   text-align: center;
   color: #abb6c4;
 `;
