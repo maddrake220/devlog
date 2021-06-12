@@ -115,7 +115,6 @@ const Stack = styled.div`
 const SiteUrl = styled.h2`
   font-size: 16px;
 `;
-Modal.setAppElement("#root");
 const Portfolio = (Props) => {
   const [IsOpen, setIsOpen] = useState(false);
 

@@ -33,3 +33,6 @@
 - [x] 포스트 : a 태그 헤더 가리는 문제
 - [x] 포스트 : 포스트 추가, 내용 수정
 - [x] 포트폴리오 : 내용 수정, 이미지 추가
+- [x] Firebase DB 연동
+- [ ] Login, Social Login
+- [ ] 포스트 : realtime Comment 기능

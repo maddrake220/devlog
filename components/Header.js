@@ -108,7 +108,6 @@ const Menu = styled.span`
   margin-left: 20px;
 `;
 
-Modal.setAppElement("#root");
 export default withRouter(myHeader);
 
 function myHeader({ router }) {
