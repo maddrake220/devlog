@@ -63,6 +63,43 @@ const Tag = styled.div`
   border-radius: 10px;
   box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 `;
+
+const CommentArea = styled.div`
+  display: flex;
+  padding-top: 4rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+`;
+const StyledComment = styled.input`
+  border-radius: 20px;
+  border: none;
+  width: 700px;
+  height: 100px;
+  font-size: 18px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const StyledSubmit = styled.div`
+  float: right;
+`;
+
+const StyledSubmitComment = styled.input`
+  background-color: yellow;
+  border: none;
+  padding: 0.7rem;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: teal;
+  color: whitesmoke;
+  font-weight: 600;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
   return {
@@ -157,41 +194,35 @@ export default function Post({ postData }) {
           </Linktext>
         </LinkContainer>
       </Container>
-      <form onSubmit={onSubmit}>
-        <input
-          id="user_id"
-          type="text"
-          onChange={onChange}
-          value={user_id}
-          placeholder="id"
-        />
-        <input
-          id="user_password"
-          type="password"
-          onChange={onChange}
-          value={user_pass}
-          placeholder="password"
-        />
-        <input
-          id="comment"
-          type="text"
-          onChange={onChange}
-          value={newComment}
-          placeholder="소중한 댓글을 남겨주세요"
-        />
-        <input type="submit" value="submit comment" />
-      </form>
-      <div style={{ marginTop: 30 }}>
-        {comments &&
-          comments.map((comment) => (
-            <div>
-              <span>{comment.creatorId}</span>
-              <span>{comment.text}</span>
-              <button>deleteComment</button>
-              <button>updateComment</button>
-            </div>
-          ))}
-      </div>
+      <CommentArea>
+        <div>
+          <form onSubmit={onSubmit}>
+            <StyledComment
+              id="comment"
+              type="text"
+              onChange={onChange}
+              value={newComment}
+              placeholder="소중한 댓글을 남겨주세요"
+            />
+            <br />
+            <StyledSubmit>
+              <StyledSubmitComment type="submit" value="댓글 작성" />
+            </StyledSubmit>
+          </form>
+          <div style={{ marginTop: 30 }}>
+            {comments &&
+              comments.map((comment) => (
+                <div>
+                  <span>{comment.creatorId}</span>
+                  <span>{comment.text}</span>
+                  <button>deleteComment</button>
+                  <button>updateComment</button>
+                </div>
+              ))}
+          </div>
+        </div>
+      </CommentArea>
+
       <Footer></Footer>
     </>
   );

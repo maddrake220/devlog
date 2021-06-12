@@ -1,22 +1,26 @@
 import "../styles/globals.css";
 import Header from "../components/Header";
-import styled from "styled-components";
 import Modal from "react-modal";
-const Footer = styled.footer`
-  margin-top: 15rem;
-  padding-top: 10rem;
-  background-color: #020715;
-  text-align: center;
-  color: #abb6c4;
-`;
+import React, { createContext, useContext } from "react";
+import { useProvideAuth } from "../components/useAuth";
+
+export const authContext = createContext();
+
+export const useAuth = () => {
+  return useContext(authContext);
+};
 
 export default function App({ Component, pageProps }) {
+  const { user } = useProvideAuth();
+
   return (
     <div id="root">
-      {Modal.setAppElement("#root")}
-      <Header />
-      <Component {...pageProps} />
-      <Footer>Jaewon's Devlog @Copyright All Rights Reserved</Footer>
+      <authContext.Provider value={user}>
+        {Modal.setAppElement("#root")}
+        <Header />
+        <Component {...pageProps} />
+      </authContext.Provider>
+      <footer>Jaewon's Devlog @Copyright All Rights Reserved</footer>
     </div>
   );
 }

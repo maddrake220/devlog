@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { withRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 import { FaList } from "react-icons/fa";
+import { RiLoginCircleLine } from "react-icons/Ri";
 import Modal from "react-modal";
-
+import { useAuth } from "../pages/_app";
+import { authContext } from "../pages/_app";
 const Header = styled.header`
   position: fixed;
   top: 0;
@@ -71,7 +73,8 @@ const SLink = styled(Link)`
 
 const RightMenu = styled.div`
   visibility: visible;
-  font-weight: 500;
+  color: yellow;
+  font-weight: 700;
   margin-top: 30px;
   display: flex;
   float: right;
@@ -108,17 +111,27 @@ const Menu = styled.span`
   margin-left: 20px;
 `;
 
+const Login = styled.div`
+  position: absolute;
+  color: black;
+  right: 25px;
+  top: 10px;
+`;
 export default withRouter(myHeader);
 
 function myHeader({ router }) {
   const [HeaderPostion, setHeaderPostion] = useState(true);
   const [IsOpen, setIsOpen] = useState(false);
+
+  const auth = useAuth();
+
   const MenuHandler = (e) => {
     console.log("sdf");
   };
   const handlescroll = (e) => {
     setHeaderPostion(window.pageYOffset > 0 ? false : true);
   };
+
   const customStyles = {
     content: {
       top: "50%",
@@ -157,6 +170,15 @@ function myHeader({ router }) {
           </SLink>
         </Devlog>
         <RightMenu>
+          <Login>
+            {auth ? (
+              auth.displayName
+            ) : (
+              <Link href="/login">
+                <a>Login</a>
+              </Link>
+            )}
+          </Login>
           <MenuIcon>
             <FaList onClick={openModal} />
             <Modal
