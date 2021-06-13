@@ -4,10 +4,10 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 import { FaList } from "react-icons/fa";
-import { RiLoginCircleLine } from "react-icons/Ri";
+import { BiLogOutCircle } from "react-icons/Bi";
 import Modal from "react-modal";
 import { useAuth } from "../pages/_app";
-import { authContext } from "../pages/_app";
+import { useProvideAuth } from "./useAuth";
 const Header = styled.header`
   position: fixed;
   top: 0;
@@ -117,14 +117,28 @@ const Login = styled.div`
   right: 25px;
   top: 10px;
 `;
+const UserEmail = styled.span`
+  position: absolute;
+  right: 55px;
+`;
+const LogoutIcon = styled(BiLogOutCircle)`
+  margin-left: 10px;
+  width: 33px;
+  height: 33px;
+  color: #334125;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 export default withRouter(myHeader);
 
 function myHeader({ router }) {
   const [HeaderPostion, setHeaderPostion] = useState(true);
   const [IsOpen, setIsOpen] = useState(false);
 
+  const { signout } = useProvideAuth();
   const auth = useAuth();
-
+  console.log(auth);
   const MenuHandler = (e) => {
     console.log("sdf");
   };
@@ -161,6 +175,9 @@ function myHeader({ router }) {
   function closeModal() {
     setIsOpen(false);
   }
+  const logoutHandler = () => {
+    signout();
+  };
   return (
     <Header isTop={HeaderPostion}>
       <Container>
@@ -171,12 +188,20 @@ function myHeader({ router }) {
         </Devlog>
         <RightMenu>
           <Login>
-            {auth ? (
-              auth.displayName
+            {auth.user === null && auth.isLogin === null ? (
+              <div></div>
+            ) : auth.user !== null && auth.isLogin === true ? (
+              <>
+                <UserEmail>{auth.user.email}</UserEmail>
+                <LogoutIcon onClick={logoutHandler} />
+              </>
             ) : (
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
+              auth.user === null &&
+              auth.isLogin === false && (
+                <Link href="/login">
+                  <a>Login</a>
+                </Link>
+              )
             )}
           </Login>
           <MenuIcon>

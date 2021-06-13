@@ -1,18 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthForm from "../../components/AuthForm";
-import { SiGoogle, SiGithub } from "react-icons/Si";
+import { SiGoogle, SiGithub } from "react-icons/si";
 import styled from "styled-components";
 import { useProvideAuth } from "../../components/useAuth";
 import { useAuth } from "../_app";
+import { useRouter } from "next/router";
 
 const Container = styled.div`
-  margin-top: 30rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  height: 100vh;
   justify-content: center;
+  align-items: center;
+`;
+
+const AuthBtns = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+`;
+
+const AuthBtn = styled.button`
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 0px;
+  font-size: 14px;
   text-align: center;
+  width: 150px;
+  background: white;
+  cursor: pointer;
 `;
 const Auth = () => {
+  const router = useRouter();
   const { signWithGoogle, signWithGithub } = useProvideAuth();
 
   const auth = useAuth();
@@ -26,24 +47,31 @@ const Auth = () => {
       signWithGithub();
     }
   };
-
+  useEffect(() => {
+    if (auth.isLogin) {
+      router.push("/");
+    }
+  }, [auth]);
   return (
     <>
-      {auth ? (
-        <div>You already logged in ! </div>
-      ) : (
-        <Container>
-          <div className="authBtns">
+      <Container>
+        {auth.isLogin ? (
+          <div>You already logged in ! </div>
+        ) : (
+          <>
             <AuthForm />
-            <button onClick={onSocialLoginClick} name="google">
-              Continue with Google <SiGoogle />
-            </button>
-            <button onClick={onSocialLoginClick} name="github">
-              Continue with Github <SiGithub />
-            </button>
-          </div>
-        </Container>
-      )}
+            <AuthBtns>
+              <AuthBtn onClick={onSocialLoginClick} name="google">
+                구글로 계속하기 <SiGoogle />
+              </AuthBtn>
+              <AuthBtn onClick={onSocialLoginClick} name="github">
+                깃헙으로 계속하기 <SiGithub />
+              </AuthBtn>
+            </AuthBtns>
+          </>
+        )}
+      </Container>
+      )
     </>
   );
 };

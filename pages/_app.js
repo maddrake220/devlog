@@ -11,11 +11,11 @@ export const useAuth = () => {
 };
 
 export default function App({ Component, pageProps }) {
-  const { user } = useProvideAuth();
+  const { user, isLogin } = useProvideAuth();
 
   return (
     <div id="root">
-      <authContext.Provider value={user}>
+      <authContext.Provider value={{ user, isLogin }}>
         {Modal.setAppElement("#root")}
         <Header />
         <Component {...pageProps} />

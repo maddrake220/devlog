@@ -34,7 +34,7 @@
 - [x] 포스트 : 포스트 추가, 내용 수정
 - [x] 포트폴리오 : 내용 수정, 이미지 추가
 - [x] Firebase DB 연동
-- [ ] Login
+- [x] Login
 - [x] social login 구현
 - [x] context를 이용한 auth 상태 관리
 - [ ] 포스트 : realtime Comment 기능
