@@ -1,4 +1,3 @@
-import { authService } from "../fbInstance";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useProvideAuth } from "./useAuth";

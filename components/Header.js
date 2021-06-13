@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 import { FaList } from "react-icons/fa";
-import { BiLogOutCircle } from "react-icons/Bi";
+import { BiLogOutCircle } from "react-icons/bi";
 import Modal from "react-modal";
 import { useAuth } from "../pages/_app";
 import { useProvideAuth } from "./useAuth";
