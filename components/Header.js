@@ -40,7 +40,7 @@ const Header = styled.header`
   height: ${(props) => (props.isTop ? "120px" : "60px")};
 
   -webkit-backdrop-filter: blur(${(props) => (props.isTop ? "0px" : "15px")});
-  backdrop-filter: blur(${(props) => (props.isTop ? "0px" : "15px")});
+  backdrop-filter: blur(${(props) => (props.isTop ? "6px" : "15px")});
 `;
 const Container = styled.div`
   display: inline-block;
@@ -138,7 +138,6 @@ function myHeader({ router }) {
 
   const { signout } = useProvideAuth();
   const auth = useAuth();
-  console.log(auth);
   const MenuHandler = (e) => {
     console.log("sdf");
   };

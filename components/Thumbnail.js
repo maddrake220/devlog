@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import styled from "styled-components";
-import Image from "next/image";
-import Date from "./date";
+import DateToString from "./date";
 
 const Container = styled.div`
   position: relative;
@@ -100,7 +99,7 @@ const Thumbnail = ({ id, image, title, year, content, tag }) => (
       {tag && tag.map((item, index) => <Tag>{item}</Tag>)}
     </TagContainer>
     <SDate>
-      <Date dateString={year} />
+      <DateToString dateString={year} />
     </SDate>
   </Container>
 );

@@ -1,11 +1,12 @@
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import Head from "next/head";
 import Link from "next/link";
-import Date from "../../components/date";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { dbService } from "../../fbInstance";
-
+import { useAuth } from "../_app";
+import DateToString from "../../components/date";
+import { useRouter } from "next/router";
 const Container = styled.div`
   display: flex;
 `;
@@ -63,7 +64,12 @@ const Tag = styled.div`
   border-radius: 10px;
   box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 `;
-
+const Comment = styled.div`
+  position: relative;
+  text-align: justify;
+  padding: 50px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+`;
 const CommentArea = styled.div`
   display: flex;
   padding-top: 4rem;
@@ -82,11 +88,50 @@ const StyledComment = styled.input`
     outline: none;
   }
 `;
+const Profile = styled.div`
+  display: flex;
+`;
+const Image = styled.div`
+  background-image: url(${(props) => props.bgUrl});
+  width: 44px;
+  height: 44px;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 9999px;
+`;
 
+const Username = styled.span`
+  font-weight: 650;
+  font-size: 16px;
+  color: #121319;
+`;
+
+const Text = styled.div`
+  padding-top: 28px;
+  padding-bottom: 28px;
+  font-weight: 350;
+  font-size: 19px;
+  color: black;
+`;
 const StyledSubmit = styled.div`
   float: right;
 `;
 
+const CommentMenu = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 6px;
+`;
+
+const CMenu = styled.span`
+  font-size: 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 const StyledSubmitComment = styled.input`
   background-color: yellow;
   border: none;
@@ -100,6 +145,34 @@ const StyledSubmitComment = styled.input`
     cursor: pointer;
   }
 `;
+const Profile_Info = styled.div`
+  margin-left: 18px;
+`;
+const CommentDate = styled.div`
+  font-size: 9px;
+`;
+const getDateComment = (date) => {
+  const commentdate = new Date(date);
+  const day = commentdate.getDate();
+  const month = commentdate.getMonth();
+  const hours = commentdate.getHours();
+  const year = commentdate.getFullYear();
+  const minutes = commentdate.getMinutes();
+  const seconds = commentdate.getSeconds();
+
+  return `${year}년 ${month}월 ${day}일 ${hours}시 ${minutes}분 ${seconds}초`;
+};
+const CommentMenuClick = (e) => {
+  console.log(e);
+  const {
+    target: { id },
+  } = e;
+  if (id === "update") {
+    console.log(id);
+  } else {
+    console.log(id);
+  }
+};
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
   return {
@@ -119,46 +192,52 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
   const [newComment, setNewComment] = useState("");
-  const [user_id, setUser_id] = useState("");
-  const [user_pass, setUser_pass] = useState("");
   const [comments, setComments] = useState([]);
+  const auth = useAuth();
+  const router = useRouter();
 
+  console.log(auth);
   useEffect(() => {
-    dbService.collection("comment").onSnapshot((snapshot) => {
-      const commentArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setComments(commentArray);
-    });
+    dbService
+      .collection("comment")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const commentArray = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setComments(commentArray);
+      });
   }, []);
 
   const onSubmit = async (e) => {
-    if (newComment === "") {
+    e.preventDefault();
+    if (!auth.isLogin) {
+      router.push("/login");
       return;
     }
-    e.preventDefault();
+    if (newComment === "") {
+      alert("내용을 입력하세요");
+      return;
+    }
 
     const commentObj = {
       text: newComment,
-      creatorId: user_id,
-      creatorPass: user_pass,
+      creatorId: auth.user.email,
+      creatorName: auth.user.displayName,
+      post_id: postData.id,
+      photoURL: auth.user.photoURL,
+      createdAt: Date.now(),
     };
     await dbService.collection("comment").add(commentObj);
+    setNewComment("");
   };
 
   const onChange = (e) => {
     const {
-      target: { id, value },
+      target: { value },
     } = e;
-    console.log(id);
-    if (id === "user_id") {
-      setUser_id(value);
-    } else if (id === "user_password") {
-      setUser_pass(value);
-    } else if (id === "comment") {
-      setNewComment(value);
-    }
+    setNewComment(value);
   };
   return (
     <>
@@ -174,7 +253,7 @@ export default function Post({ postData }) {
               postData.tag.map((item, index) => <Tag>{item}</Tag>)}
           </TagContainer>
           <SDate>
-            <Date dateString={postData.date} />
+            <DateToString dateString={postData.date} />
           </SDate>
           <Hr />
           <Article>
@@ -209,16 +288,41 @@ export default function Post({ postData }) {
               <StyledSubmitComment type="submit" value="댓글 작성" />
             </StyledSubmit>
           </form>
-          <div style={{ marginTop: 30 }}>
+          <div style={{ marginTop: 80 }}>
             {comments &&
-              comments.map((comment) => (
-                <div>
-                  <span>{comment.creatorId}</span>
-                  <span>{comment.text}</span>
-                  <button>deleteComment</button>
-                  <button>updateComment</button>
-                </div>
-              ))}
+              comments.map(
+                (comment) =>
+                  comment.post_id === postData.id && (
+                    <Comment>
+                      <Profile>
+                        <Image
+                          bgUrl={
+                            comment.photoURL
+                              ? comment.photoURL
+                              : "/images/deno.jpg"
+                          }
+                        />
+                        <Profile_Info>
+                          <Username>{comment.creatorName}</Username>
+                          <CommentDate>
+                            {getDateComment(comment.createdAt)}
+                          </CommentDate>
+                        </Profile_Info>
+                      </Profile>
+                      <Text>{comment.text}</Text>
+                      {comment.creatorId === auth?.user?.email && (
+                        <CommentMenu>
+                          <CMenu onClick={CommentMenuClick} id="delete">
+                            수정
+                          </CMenu>
+                          <CMenu onClick={CommentMenuClick} id="update">
+                            삭제
+                          </CMenu>
+                        </CommentMenu>
+                      )}
+                    </Comment>
+                  )
+              )}
           </div>
         </div>
       </CommentArea>
