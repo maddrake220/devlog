@@ -38,6 +38,7 @@
 - [x] social login 구현
 - [x] context를 이용한 auth 상태 관리
 - [ ] 포스트 : realtime Comment 기능
-- [ ] comment 로그인 유저 기반으로 변경
+- [x] comment 로그인 유저 기반으로 변경
+- [ ] comment 수정/ 삭제 구현
 - [ ] home observer기능 bug 수정
 - [ ] md파일 업로드 형식으로 변경 ?

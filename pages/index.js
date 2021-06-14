@@ -9,6 +9,7 @@ import { GrNext, GrPrevious } from "react-icons/gr";
 import Portfolio from "../components/Home/Portfolio";
 import About from "../components/Home/About";
 import { Projects, Abouts } from "../public/arrays";
+import Head from "next/head";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const Container = styled.div`
@@ -113,64 +114,74 @@ export default function Home({ allPostsData }) {
   const observer_portfolio = useScrollFadeIn().ref;
   const observer_blog = useScrollFadeIn().ref;
   return (
-    <Container>
-      <Backdrop />
-      <Content>
-        <Title>주니어 프론트엔드 개발자 최재원의 개발 블로그입니다.</Title>
-        <AboutContainer ref={observer_about}>
-          <h2>소개</h2>
-          <br />
-          <Section>
-            {Abouts &&
-              Abouts.map((about) => (
-                <About
-                  title={about.title}
-                  innerCircle={about.innerCircle}
-                  description={about.description}
-                  fontsize={about.fontsize}
-                  margintop={about.margintop}
-                />
-              ))}
-          </Section>
-        </AboutContainer>
-        <Pofol ref={observer_portfolio}>
-          <h2>포트폴리오</h2>
-          <Section imagesize="500px">
-            {Projects &&
-              Projects.map((project) => (
-                <Portfolio
-                  title={project.title}
-                  info={project.info}
-                  info2={project.info2}
-                  period={project.period}
-                  description={project.description}
-                  fontcolor={project.fontcolor}
-                  image={project.image}
-                  homepage={project.homepage}
-                  isHome={true}
-                  stacks={project.stacks}
-                />
-              ))}
-          </Section>
-        </Pofol>
-        <Blog ref={observer_blog}>
-          <h2>블로그</h2>
-          {allPostsData && allPostsData.length > 0 && (
-            <Slider {...settings}>
-              {allPostsData.map((value) => (
-                <Thumbnail
-                  width="150px"
-                  height="140px"
-                  id={value.id}
-                  year={value.date}
-                  title={value.title}
-                  image={value.image}
-                />
-              ))}
-            </Slider>
-          )}
-        </Blog>
-      </Content>
-    </Container>
+    <>
+      <Head>
+        <title>Home</title>
+        <meta
+          name="google-site-verification"
+          content="3loVf6n_W27Duc4ecCTb0P7VcQkm84AjDAvHG9ggnQ0"
+          key="title"
+        />
+      </Head>
+      <Container>
+        <Backdrop />
+        <Content>
+          <Title>주니어 프론트엔드 개발자 최재원의 개발 블로그입니다.</Title>
+          <AboutContainer ref={observer_about}>
+            <h2>소개</h2>
+            <br />
+            <Section>
+              {Abouts &&
+                Abouts.map((about) => (
+                  <About
+                    title={about.title}
+                    innerCircle={about.innerCircle}
+                    description={about.description}
+                    fontsize={about.fontsize}
+                    margintop={about.margintop}
+                  />
+                ))}
+            </Section>
+          </AboutContainer>
+          <Pofol ref={observer_portfolio}>
+            <h2>포트폴리오</h2>
+            <Section imagesize="500px">
+              {Projects &&
+                Projects.map((project) => (
+                  <Portfolio
+                    title={project.title}
+                    info={project.info}
+                    info2={project.info2}
+                    period={project.period}
+                    description={project.description}
+                    fontcolor={project.fontcolor}
+                    image={project.image}
+                    homepage={project.homepage}
+                    isHome={true}
+                    stacks={project.stacks}
+                  />
+                ))}
+            </Section>
+          </Pofol>
+          <Blog ref={observer_blog}>
+            <h2>블로그</h2>
+            {allPostsData && allPostsData.length > 0 && (
+              <Slider {...settings}>
+                {allPostsData.map((value) => (
+                  <Thumbnail
+                    width="150px"
+                    height="140px"
+                    id={value.id}
+                    year={value.date}
+                    title={value.title}
+                    image={value.image}
+                  />
+                ))}
+              </Slider>
+            )}
+          </Blog>
+        </Content>
+      </Container>
+    </>
   );
 }
