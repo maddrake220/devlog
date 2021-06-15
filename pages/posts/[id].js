@@ -151,6 +151,25 @@ const Profile_Info = styled.div`
 const CommentDate = styled.div`
   font-size: 9px;
 `;
+
+const EditText = styled.input`
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-radius: 20px;
+`;
+
+const EditTextSubmit = styled.input`
+  margin: 5px;
+  padding: 10px;
+  font-weight: 700;
+  float: right;
+  color: white;
+  border: none;
+  background-color: teal;
+  border-radius: 3px;
+  cursor: pointer;
+`;
 const getDateComment = (date) => {
   const commentdate = new Date(date);
   const day = commentdate.getDate();
@@ -161,17 +180,6 @@ const getDateComment = (date) => {
   const seconds = commentdate.getSeconds();
 
   return `${year}년 ${month}월 ${day}일 ${hours}시 ${minutes}분 ${seconds}초`;
-};
-const CommentMenuClick = (e) => {
-  console.log(e);
-  const {
-    target: { id },
-  } = e;
-  if (id === "update") {
-    console.log(id);
-  } else {
-    console.log(id);
-  }
 };
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
@@ -192,9 +200,36 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
   const [newComment, setNewComment] = useState("");
+  const [editedComment, setEditedComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [editing, setEditing] = useState(false);
   const auth = useAuth();
   const router = useRouter();
+
+  const onDeleteClick = async (e) => {
+    const confirm = window.confirm("댓글을 삭제 하시겠습니까 ?");
+    if (confirm) {
+      await dbService.doc(`comment/${comments[0].id}`).delete();
+    }
+  };
+  const onEditTextChange = (e) => {
+    const {
+      target: { value },
+    } = e;
+    setEditedComment(value);
+  };
+  const onTextEditSubmit = async (e) => {
+    e.preventDefault();
+    await dbService.doc(`comment/${comments[0].id}`).update({
+      text: editedComment,
+    });
+    setEditing(false);
+    setEditedComment("");
+  };
+  const toggleEditing = (value) => {
+    setEditedComment(value);
+    setEditing((prev) => !prev);
+  };
 
   console.log(auth);
   useEffect(() => {
@@ -309,15 +344,36 @@ export default function Post({ postData }) {
                           </CommentDate>
                         </Profile_Info>
                       </Profile>
-                      <Text>{comment.text}</Text>
+                      <Text>
+                        {editing ? (
+                          <form onSubmit={onTextEditSubmit}>
+                            <EditText
+                              type="text"
+                              value={editedComment}
+                              onChange={onEditTextChange}
+                            ></EditText>
+                            <EditTextSubmit
+                              type="submit"
+                              value="수정 완료"
+                            ></EditTextSubmit>
+                          </form>
+                        ) : (
+                          comment.text
+                        )}
+                      </Text>
                       {comment.creatorId === auth?.user?.email && (
                         <CommentMenu>
-                          <CMenu onClick={CommentMenuClick} id="delete">
-                            수정
+                          <CMenu
+                            onClick={() => toggleEditing(comment.text)}
+                            id="update"
+                          >
+                            {editing ? "취소" : "수정"}
                           </CMenu>
-                          <CMenu onClick={CommentMenuClick} id="update">
-                            삭제
-                          </CMenu>
+                          {!editing && (
+                            <CMenu onClick={onDeleteClick} id="delete">
+                              삭제
+                            </CMenu>
+                          )}
                         </CommentMenu>
                       )}
                     </Comment>

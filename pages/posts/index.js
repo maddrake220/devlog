@@ -3,7 +3,6 @@ import { getSortedPostsData } from "../../lib/posts";
 import Section from "../../components/Section";
 import Thumbnail from "../../components/Thumbnail";
 import styled from "styled-components";
-import { device } from "../../components/device";
 
 const Container = styled.div`
   position: relative;
