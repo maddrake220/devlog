@@ -27,6 +27,8 @@ link:
 
 ## 프로젝트 소개
 
+<br/><br/><br/>
+
 ### <a name="body1"></a>
 
 <br/><br/><br/>
@@ -72,13 +74,26 @@ link:
 - CONTACT  
   css Animation을 구현
 
+<br/><br/><br/>
+
 ### <a name="body2"></a>
 
 <br/><br/><br/>
 
 ## 적용기술
 
-React, Next, ES6, firebase, styled-components
+- Framework : Next
+- Language : ES6
+- Database: firebase
+- Styling: styled-components
+- deploy : vercel
+- Etc : Markdown
+
+<br/><br/><br/>
+
+### <a name="end"></a>
+
+<br/><br/><br/>
 
 ## 마치며
 

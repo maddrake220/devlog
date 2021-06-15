@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start",
-    "generate:sitemap": "node ./scripts/generate-sitemap.js"
+    "start": "next start"
   },
   "dependencies": {
     "date-fns": "^2.21.3",
+    "dotenv": "^10.0.0",
     "firebase": "^8.6.7",
     "gray-matter": "^4.0.3",
     "next": "^10.0.0",

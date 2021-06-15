@@ -1,7 +1,7 @@
 ---
 title: "Madflix"
 date: "2020-05-24"
-image: "/images/devlog.jpg"
+image: "/images/madflix.jpg"
 tag: ["Project"]
 description: "Madflix는 Nomadcoder Code Challenge 프로그램을 통해 개발 한 첫번째 React 프로젝트 입니다. Moviedb restAPI를 기반으로 영화 정보를 볼 수 있는 웹 사이트 입니다."
 link:
@@ -21,6 +21,8 @@ link:
 
 - #Madflix  
   Madflix는 Nomadcoder Code Challenge 프로그램을 통해 개발 한 첫번째 React 프로젝트 입니다. Moviedb restAPI를 기반으로 영화 정보를 볼 수 있는 웹 사이트 입니다.
+
+<br/><br/><br/>
 
 ### <a name="body1"></a>
 
@@ -61,6 +63,12 @@ link:
 
 ![alt text](/images/madflix_search.jpg "Title")
 
+<br/><br/><br/>
+
+### <a name="body2"></a>
+
+<br/><br/><br/>
+
 ### 사용 스킬
 
 - Framework : React
@@ -68,6 +76,12 @@ link:
 - Styling: styled-components
 - API : restFul API, Youtube API
 - Deploy : netlify
+
+<br/><br/><br/>
+
+### <a name="end"></a>
+
+<br/><br/><br/>
 
 ### 마치며
 

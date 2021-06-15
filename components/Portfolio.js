@@ -183,15 +183,15 @@ const Portfolio = (Props) => {
             <div>
               <Link href={Props.homepage}>
                 <a target="_blank">
-                  <SiteUrl>{Props.homepage}</SiteUrl>
+                  <SiteUrl>SiteURL: {Props.homepage}</SiteUrl>
                 </a>
               </Link>
             </div>
 
             <div>
-              <Link href={`/${Props.post}`}>
+              <Link href={Props.post && Props.post}>
                 <a>
-                  <SiteUrl>{Props.post}</SiteUrl>
+                  <SiteUrl>포스트 보러가기</SiteUrl>
                 </a>
               </Link>
             </div>
