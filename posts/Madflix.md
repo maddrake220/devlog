@@ -1,14 +1,15 @@
 ---
-title: "Firebase (1)"
-date: "2020-06-10"
-image: "/images/firebase.webp"
-tag: ["Firebase"]
-description: "TypeScript를 사용하는 가장 큰 이유 중 하나는 정적 타입을 지원한다는 것이다. TypeScript는 정적 타입을 지원하므로 컴파일 단계에서 오류를 포착할 수 있는 장점이 있다. 명시적인 정적 타입 지정은 개발자의 의도를 명확하게 코드로 기술할 수 있다."
+title: "Madflix"
+date: "2020-05-24"
+image: "/images/devlog.jpg"
+tag: ["Project"]
+description: "Madflix는 Nomadcoder Code Challenge 프로그램을 통해 개발 한 첫번째 React 프로젝트 입니다. Moviedb restAPI를 기반으로 영화 정보를 볼 수 있는 웹 사이트 입니다."
 link:
   [
-    { id: "#head", name: "Firebase, 사용 이유" },
-    { id: "#body1", name: "Firebase on React" },
-    { id: "#body2", name: "Firebase 사용" },
+    { id: "#head", name: "프로젝트 개요" },
+    { id: "#body1", name: "프로젝트 소개" },
+    { id: "#body2", name: "사용 스킬" },
+    { id: "#end", name: "마치며" },
   ]
 ---
 
@@ -16,66 +17,58 @@ link:
 
 <br/><br/><br/>
 
-### Firebase 사용 이유
+### Madflix 프로젝트 개요
 
-- firebase 란 ?  
-  Firebase는 Serverless BaaS (Backend as a Service) 기반 Nosql 클라우드 데이터베이스 입니다.
-
-- friebase 사용 이유
+- #Madflix  
+  Madflix는 Nomadcoder Code Challenge 프로그램을 통해 개발 한 첫번째 React 프로젝트 입니다. Moviedb restAPI를 기반으로 영화 정보를 볼 수 있는 웹 사이트 입니다.
 
 ### <a name="body1"></a>
 
 <br/><br/><br/>
 
-### Firebase on React
+### 프로젝트 소개
 
-- React에서 Firebase Configuration 방법
+- 홈 화면
 
-npm i firebase
+1. YT API를 이용해 Autostart, Pause, Mute 기능 구현
+2. Styled-components 를 이용해 sticky background와 Poster구현
 
-<pre>
-  <code>
-  //.env
-  REACT_APP_API_KEY=AIzaSyDU38Ar8ioBY3qscYk4D-poTMbflkBIKS
-  REACT_APP_AUTH_DOMAIN=maditter-9e9d0.firebaseapp.co
-  REACT_APP_PROJECT_ID=maditter-9e9d
-  REACT_APP_STORAGE_BUCKET=maditter-9e9d0.appspot.co
-  REACT_APP_MSEEAGING_SENDER_ID=16870701135
-  REACT_APP_APP_ID=1:168707011353:web:dbe75844f0befdd76f8b8
-  </code>
-</pre>
+![alt text](/images/madflix.jpg "Title")
 
-- .env
-  git 에 키가 노출되는 것을 방지하기 위해 .env파일에 값 정의
+- Movie 화면
 
-* 주의 사항
-  1. root파일에 .env 생성
-  2. React에서 .env에 정의된 값을 사용하기 위해서는 <<REACT*APP* + 환경변수명>> 같은 형식으로 정의
-  3. API_key error 발생 시 yarn add dotenv 다운로드
+1. MovieDB API를 axios를 사용해 Movie의 각 섹션별로 fetching
+2. Poster hovering시 Animation 구현
 
-### <a name="body2"></a>
+![alt text](/images/madflix_movies.jpg "Title")
 
-<br/><br/><br/>
+- TV 화면
 
-- firebase 사용하기
+1. MovieDB API를 axios를 사용해 TV Show의 각 섹션별로 fetching
+2. Poster hovering시 Animation 구현
 
-<pre>
-  <code>
-  //fbInstance.js
-  import firebase from "firebase";
-  import "firebase/auth";
+![alt text](/images/madflix_tvs.jpg "Title")
 
-  const firebaseConfig = {
-    apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_MSEEAGING_SENDER_ID,
-    appId: process.env.REACT_APP_APP_ID,
-  };
-  
-  firebase.initializeApp(firebaseConfig); // initailizing firebase
+- Detail 화면
 
-  export const authService = firebase.auth(); // Autu()
-  </code>
-</pre>
+1. 별점 기능 구현
+2. Tab 기능 구현 : Tab별로 각각 정보, 제작사, 클립, 시리즈 기능 구현
+   ![alt text](/images/madflix_detail.jpg "Title")
+
+- Search 화면
+
+1. 검색 기능 구현
+
+![alt text](/images/madflix_search.jpg "Title")
+
+### 사용 스킬
+
+- Framework : React
+- Language : Javascript
+- Styling: styled-components
+- API : restFul API, Youtube API
+- Deploy : netlify
+
+### 마치며
+
+- 제 첫번쨰 프로젝트인 만큼 정말 많은 것들을 배울 수 있었고 특히 React의 Rendering 방식, 순서와 JSX 문법, Class Components 의 단점과 Functional 방식을 지향해야 하는 이유 등에 대해 많이 알게 되었습니다.

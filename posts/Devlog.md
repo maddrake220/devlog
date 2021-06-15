@@ -3,13 +3,12 @@ title: "Devlog"
 date: "2020-06-15"
 image: "/images/devlog.jpg"
 tag: ["Project"]
-description: "TypeScript를 사용하는 가장 큰 이유 중 하나는 정적 타입을 지원한다는 것이다. TypeScript는 정적 타입을 지원하므로 컴파일 단계에서 오류를 포착할 수 있는 장점이 있다. 명시적인 정적 타입 지정은 개발자의 의도를 명확하게 코드로 기술할 수 있다."
+description: "Devlog는 프론트엔드 개발 공부를 하면서 습득한 스킬들을 기록하기 위해 만든 웹 블로그 입니다. 추후 지속적인 업데이트를 통해 프로젝트를 완성할 계획입니다."
 link:
   [
     { id: "#head", name: "Devlog 프로젝트 개요" },
-    { id: "#body1", name: "아키텍처" },
-    { id: "#body2", name: "스크린샷" },
-    { id: "#body3", name: "적용기술" },
+    { id: "#body1", name: "소개" },
+    { id: "#body2", name: "적용기술" },
     { id: "#end", name: "마치며" },
   ]
 ---
@@ -22,21 +21,13 @@ link:
 
 ![alt text](/images/devlog.jpg "Title")
 
-- #Devlog
+- ### Devlog
 
-  #### Devlog는 프론트엔드 개발 공부를 하면서 습득한 스킬들을 기록하기 위해 만든 웹 블로그 입니다.
+  #### Devlog는 프론트엔드 개발 공부를 하면서 습득한 스킬들을 기록하기 위해 만든 웹 블로그 입니다. 추후 지속적인 업데이트를 통해 프로젝트를 완성할 계획입니다.
 
-## 아키텍처
+## 프로젝트 소개
 
 ### <a name="body1"></a>
-
-<br/><br/><br/>
-
-![alt text](/images/devlog.jpg "Title")
-
-## 스크린샷
-
-### <a name="body2"></a>
 
 <br/><br/><br/>
 
@@ -81,7 +72,7 @@ link:
 - CONTACT  
   css Animation을 구현
 
-### <a name="body3"></a>
+### <a name="body2"></a>
 
 <br/><br/><br/>
 
@@ -91,5 +82,6 @@ React, Next, ES6, firebase, styled-components
 
 ## 마치며
 
-Devlog 사이드 프로젝트를 진행하면서 Nextjs 공부와 functional Programming, Firebase와 같은 noDB,noSQL 에 대해 많은 공부를 할수 있었습니다.  
-또한 SSR과 CSR 동작 원리, SEO를 위한 Google robots 와 Google Search Console 등 여러 개념에 대해서도 알게되는 계기가 되었습니다.
+##### Devlog 사이드 프로젝트를 진행하면서 Nextjs 공부와 functional Programming, Firebase와 같은 noDB,noSQL 에 대해 많은 공부를 할수 있었습니다.
+
+##### 또한 SSR과 CSR 동작 원리, SEO를 위한 Google robots 와 Google Search Console 등 여러 개념에 대해서도 알게되는 계기가 되었습니다.

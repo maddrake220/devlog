@@ -1,7 +1,7 @@
 ---
 title: "Visual Studio Code ShortCut 모음"
 date: "2020-06-10"
-image: "/images/ts.webp"
+image: "/images/vscode.png"
 tag: ["VSCode"]
 description: ""
 link: [{ id: "#head", name: "VSCode 단축키" }]
