@@ -42,3 +42,4 @@
 - [ ] comment 수정/ 삭제 구현
 - [ ] home observer기능 bug 수정
 - [ ] md파일 업로드 형식으로 변경 ?
+- [x] SEO

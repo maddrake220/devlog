@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "generate:sitemap": "node ./scripts/generate-sitemap.js"
   },
   "dependencies": {
     "date-fns": "^2.21.3",
@@ -20,6 +21,7 @@
     "react-slick": "^0.28.1",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
+    "sitemap": "^7.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.0",
     "uuid": "^8.3.2"
