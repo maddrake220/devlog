@@ -1,6 +1,6 @@
 import React from "react";
 import { Projects, Stacks } from "../../public/arrays";
-import Portfolio from "../../components/Home/Portfolio";
+import Portfolio from "../../components/Portfolio";
 import styled from "styled-components";
 const Container = styled.div`
   margin-top: 15rem;
@@ -31,6 +31,7 @@ export default () => (
             homepage={project.homepage}
             isHome={false}
             stacks={project.stacks}
+            post={project.post}
           />
         ))}
     </Content>

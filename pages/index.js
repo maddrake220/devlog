@@ -6,7 +6,7 @@ import Section from "../components/Section";
 import Thumbnail from "../components/Thumbnail";
 import { getSortedPostsData } from "../lib/posts";
 import { GrNext, GrPrevious } from "react-icons/gr";
-import Portfolio from "../components/Home/Portfolio";
+import Portfolio from "../components/Portfolio";
 import About from "../components/Home/About";
 import { Projects, Abouts } from "../public/arrays";
 import Head from "next/head";

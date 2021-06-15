@@ -187,6 +187,14 @@ const Portfolio = (Props) => {
                 </a>
               </Link>
             </div>
+
+            <div>
+              <Link href={`/${Props.post}`}>
+                <a>
+                  <SiteUrl>{Props.post}</SiteUrl>
+                </a>
+              </Link>
+            </div>
             <div>
               <Stack>
                 {Props.stacks &&

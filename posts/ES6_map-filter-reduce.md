@@ -1,7 +1,7 @@
 ---
 title: "ES6 map() filter() reduce() 함수 정리"
 date: "2021-06-02"
-image: "/images/4444.jpg"
+image: "/images/js.webp"
 description: "fetching한 data 정렬할 때, 배열 요소에 특정 처리를 하는 등 배열을 다룰 떄 유용하게 사용할 수 있다. 기존 for, forEach문 등등 사용할 때에 비해 매우매우 편리하게 사용할 수 있다."
 tag: ["ES6"]
 link:

@@ -1,7 +1,7 @@
 ---
 title: "Next.js : pre-rendering"
 date: "2021-05-29"
-image: "/images/4444.jpg"
+image: "/images/nextjs.webp"
 tag: ["React", "Next.js"]
 description: "Next.js는 두가지 pre-rendering 형태를 가지고 있다 : Static Generation 과 Server-side Rendering.
 이 두가지의 차이점은 언제 page에 HTML을 generate를 하느냐에 따라 다르다"
