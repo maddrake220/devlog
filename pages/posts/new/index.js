@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { MarkedInput } from "../../../components/NewPost/markedInput";
 import { Result } from "../../../components/NewPost/result";
-import EditorContext from "./editorContext";
+import EditorContext from "../../../components/NewPost/editorContext";
 const AppContainer = styled.div`
   padding-top: 10rem;
   width: 100%;

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import editorContext from "../../pages/posts/new/editorContext";
+import editorContext from "./editorContext";
 import { useAuth } from "../../pages/_app";
 import { dbService, storageService } from "../../fbInstance";
 import { useRouter } from "next/router";

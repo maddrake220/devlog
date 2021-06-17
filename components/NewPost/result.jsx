@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
-import editorContext from "../../pages/posts/new/editorContext";
+import editorContext from "./editorContext";
 
 const Container = styled.div`
   width: 50%;
