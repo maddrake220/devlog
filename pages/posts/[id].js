@@ -1,30 +1,29 @@
-import { getAllPostIds, getPostData } from "../../lib/posts";
 import Head from "next/head";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { dbService } from "../../fbInstance";
-import DateToString from "../../components/date";
+import { GetDateFormatted } from "../../components/getDateFormatted";
 import Commentarea from "../../components/Commentarea";
 import LinkContainer from "../../components/LinkContainer";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+
 const Container = styled.div`
   display: flex;
+  margin-top: 15rem;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+`;
+const ResultArea = styled.div`
+  flex-direction: column;
+  align-items: center;
+  text-align: justify;
+  width: 50%;
 `;
 
 const Footer = styled.div`
   margin-top: 20rem;
-`;
-const Hr = styled.hr`
-  float: left;
-  width: 70%;
-  border-style: solid;
-  color: black;
-`;
-
-const PostContainer = styled.div`
-  padding-top: 8rem;
-  width: 40%;
-  margin: 0 auto;
-  margin-right: 10rem;
 `;
 
 const SDate = styled.div`
@@ -52,20 +51,34 @@ const Tag = styled.div`
   border-radius: 10px;
   box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 `;
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id);
-  return {
-    props: {
-      postData,
-    },
-  };
-}
+
+export const getStaticProps = async (context) => {
+  const { id } = context.params;
+  const res = await dbService.collection("post").where("id", "==", id).get();
+  const entry = res.docs.map((entry) => entry.data());
+  if (entry.length) {
+    return {
+      props: {
+        postData: entry[0],
+      },
+    };
+  } else {
+    return {
+      props: {},
+    };
+  }
+};
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  const entries = await dbService.collection("post").get();
+  const paths = entries.docs.map((entry) => ({
+    params: {
+      id: entry.data().id,
+    },
+  }));
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -88,27 +101,24 @@ export default function Post({ postData }) {
   return (
     <>
       <Container>
-        <PostContainer>
+        <ResultArea>
           <Head>
             <title>{postData.title}</title>
           </Head>
 
           <Title>{postData.title}</Title>
           <TagContainer>
-            {postData.tag &&
-              postData.tag.map((item, index) => <Tag>{item}</Tag>)}
+            {postData.tags && postData.tags.map((item) => <Tag>{item}</Tag>)}
           </TagContainer>
-          <SDate>
-            <DateToString dateString={postData.date} />
-          </SDate>
-          <Hr />
+          <SDate>{GetDateFormatted(postData.createdAt)}</SDate>
+
           <Article>
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            <ReactMarkdown remarkPlugins={[gfm]} children={postData.text} />
           </Article>
-        </PostContainer>
-        <LinkContainer postData={postData} />
+          <LinkContainer postData={postData} />
+          <Commentarea comments={comments} postData={postData} />
+        </ResultArea>
       </Container>
-      <Commentarea comments={comments} postData={postData} />
       <Footer></Footer>
     </>
   );

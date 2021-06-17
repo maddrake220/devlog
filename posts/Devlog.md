@@ -57,7 +57,7 @@ link:
 
 - BLOG
 
-1. md파일의 id별로 Grid형식으로 구현
+1. markdown id별로 Grid형식으로 구현
 2. category 별 search 기능
 
 ![alt text](/images/devlog_post.jpg "blog")
@@ -66,10 +66,18 @@ link:
 
 ![alt text](/images/devlog_post_id.png "post")
 
-1. side bar Navigation 구현
+1. side bar Navigation 구현 -> 수정 예정
 2. Login 기반 댓글 구현
 
-![alt text](/images/devlog_contact.jpg "post")
+- 포스팅 기능 구현
+
+![alt text](/images/blog_posting.jpg "posting")
+
+1. TItle, Sub_title, Thumbnail 등록
+2. Markdown으로 작성하면 실시간 적용 화면 표시
+3. Draft.js 같은 text editor 라이브러리를 통해 텍스트 에디팅 기능 구현 예정
+
+![alt text](/images/devlog_contact.jpg "contact")
 
 - CONTACT  
   css Animation을 구현

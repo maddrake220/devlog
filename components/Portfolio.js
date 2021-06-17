@@ -187,14 +187,6 @@ const Portfolio = (Props) => {
                 </a>
               </Link>
             </div>
-
-            <div>
-              <Link href={Props.post && Props.post}>
-                <a>
-                  <SiteUrl>포스트 보러가기</SiteUrl>
-                </a>
-              </Link>
-            </div>
             <div>
               <Stack>
                 {Props.stacks &&

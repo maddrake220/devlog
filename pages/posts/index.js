@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getSortedPostsData } from "../../lib/posts";
 import Section from "../../components/Section";
 import Thumbnail from "../../components/Thumbnail";
 import styled from "styled-components";
-
+import Link from "next/link";
+import { dbService } from "../../fbInstance";
 const Container = styled.div`
   position: relative;
   width: 100%;
@@ -61,14 +61,28 @@ const Tag = styled.div`
   }
 `;
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
+const NewPost = styled.span`
+  float: right;
+  margin-right: 100px;
+  border-radius: 15px;
+  padding: 0.4rem;
+  background-color: black;
+`;
+export const getStaticProps = async () => {
+  const res = await dbService.collection("post").get();
+  const entry = res.docs.map((entry) => entry.data());
+  if (entry.length) {
+    return {
+      props: {
+        allPostsData: entry,
+      },
+    };
+  } else {
+    return {
+      props: {},
+    };
+  }
+};
 export default function Posts({ allPostsData }) {
   const [Tags, setTags] = useState([]);
   const [Filter, setFilter] = useState("");
@@ -78,12 +92,12 @@ export default function Posts({ allPostsData }) {
   useEffect(() => {
     allPostsData.map(
       (item) =>
-        item.tag &&
-        item.tag.filter((element, index) => {
+        item.tags &&
+        item.tags.filter((element, index) => {
           Arr.push(element);
         })
     );
-
+    console.log(ReducedArr);
     ReducedArr = Arr.reduce(
       (unique, item) => (unique.includes(item) ? unique : [...unique, item]),
       []
@@ -100,6 +114,7 @@ export default function Posts({ allPostsData }) {
   const NoFilter = () => {
     setisFilter(false);
   };
+
   return (
     <>
       <Backdrop />
@@ -115,21 +130,29 @@ export default function Posts({ allPostsData }) {
                 </Tag>
               ))}
           </Items>
+          <NewPost>
+            <Link href="/posts/new">
+              <a style={{ color: "white" }}>새 포스트 작성</a>
+            </Link>
+          </NewPost>
+          <br />
+          <br />
+          <br />
           {isFilter ? (
             <Section imagesize="340px">
               {allPostsData &&
                 allPostsData
                   .filter((element) => {
-                    return element.tag && element.tag.includes(Filter);
+                    return element.tags && element.tags.includes(Filter);
                   })
                   .map((value) => (
                     <Thumbnail
                       id={value.id}
-                      year={value.date}
+                      year={value.createdAt}
                       title={value.title}
-                      image={value.image}
-                      content={value.description}
-                      tag={value.tag ? value.tag : ""}
+                      image={value.attachmentUrl}
+                      content={value.sub_title}
+                      tag={value.tags ? value.tags : ""}
                     />
                   ))}
             </Section>
@@ -139,11 +162,11 @@ export default function Posts({ allPostsData }) {
                 allPostsData.map((value) => (
                   <Thumbnail
                     id={value.id}
-                    year={value.date}
+                    year={value.createdAt}
                     title={value.title}
-                    image={value.image}
-                    content={value.description}
-                    tag={value.tag ? value.tag : ""}
+                    image={value.attachmentUrl}
+                    content={value.sub_title}
+                    tag={value.tags ? value.tags : ""}
                   />
                 ))}
             </Section>

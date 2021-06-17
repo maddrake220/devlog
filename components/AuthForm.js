@@ -16,6 +16,10 @@ const AuthInput = styled.input`
   margin-bottom: 10px;
   font-size: 14px;
   color: black;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const AuthSubmit = styled.input`

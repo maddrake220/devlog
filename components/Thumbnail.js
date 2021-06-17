@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import styled from "styled-components";
 import DateToString from "./date";
-
+import { GetDateFormatted } from "./getDateFormatted";
 const Container = styled.div`
   position: relative;
   background-color: whitesmoke;
@@ -58,6 +58,7 @@ const SDate = styled.div`
 `;
 const TagContainer = styled.div`
   margin: 1rem;
+  padding-bottom: 1rem;
 `;
 
 const Tag = styled.div`
@@ -98,17 +99,15 @@ const Thumbnail = ({ id, image, title, year, content, tag }) => (
     <TagContainer>
       {tag && tag.map((item, index) => <Tag>{item}</Tag>)}
     </TagContainer>
-    <SDate>
-      <DateToString dateString={year} />
-    </SDate>
+    <SDate>{year && GetDateFormatted(year)}</SDate>
   </Container>
 );
 
 Thumbnail.propTypes = {
   image: PropTypes.string,
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  year: PropTypes.string,
+  id: PropTypes.number.string,
+  title: PropTypes.string,
+  year: PropTypes.number,
   content: PropTypes.string,
   tag: PropTypes.array,
 };

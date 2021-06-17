@@ -32,7 +32,7 @@ const Header = styled.header`
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-
+  visibility: ${(props) => (props.hide ? "hidden" : "visible")};
   margin: 0;
   height: 120px;
   width: 100%; /* needed for Firefox */
@@ -132,15 +132,11 @@ const LogoutIcon = styled(BiLogOutCircle)`
 `;
 export default withRouter(myHeader);
 
-function myHeader({ router }) {
+function myHeader({ router, props }) {
   const [HeaderPostion, setHeaderPostion] = useState(true);
   const [IsOpen, setIsOpen] = useState(false);
-
   const { signout } = useProvideAuth();
   const auth = useAuth();
-  const MenuHandler = (e) => {
-    console.log("sdf");
-  };
   const handlescroll = (e) => {
     setHeaderPostion(window.pageYOffset > 0 ? false : true);
   };
@@ -177,6 +173,7 @@ function myHeader({ router }) {
   const logoutHandler = () => {
     signout();
   };
+
   return (
     <Header isTop={HeaderPostion}>
       <Container>
