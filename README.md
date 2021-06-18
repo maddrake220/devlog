@@ -73,11 +73,12 @@
 
 ## 마치며
 
-##### Devlog 사이드 프로젝트를 진행하면서 Nextjs 공부와 functional Programming, Firebase와 같은 noDB,noSQL 에 대해 많은 공부를 할수 있었습니다.
+##### Devlog 사이드 프로젝트를 진행하면서 Nextjs의 SSR 공부와 functional Programming, Firebase에 대해 알게 되었습니다.
 
 ##### 또한 SSR과 CSR 동작 원리, SEO를 위한 Google robots 와 Google Search Console 등 여러 개념에 대해서도 알게되는 계기가 되었습니다.
 
 
+[!Link](https://devlog-maddrake.vercel.app)
 
 
 
@@ -134,4 +135,5 @@
 - [] 새 포스트와 포스트에 link 구현
 - [] 포스트 수정, 삭제 기능 구현
 - [] 전체 테스팅
-- 
+
+
