@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useProvideAuth } from "./useAuth";
-const Container = styled.form`
+import { SiGoogle, SiGithub } from "react-icons/si";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Authform = styled.form`
   width: 100%;
   max-width: 320px;
   display: flex;
@@ -36,6 +46,25 @@ const AuthSubmit = styled.input`
   cursor: pointer;
 `;
 
+const AuthBtns = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+`;
+
+const AuthBtn = styled.button`
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 0px;
+  font-size: 14px;
+  text-align: center;
+  width: 150px;
+  background: white;
+  cursor: pointer;
+`;
+
 const AuthError = styled.span`
   color: tomato;
   text-align: center;
@@ -57,8 +86,20 @@ const AuthForm = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [newAccount, setNewAccount] = useState(true);
+  const { signWithGoogle, signWithGithub } = useProvideAuth();
 
   const { signin, signup } = useProvideAuth();
+
+  const onSocialLoginClick = async (e) => {
+    const {
+      target: { name },
+    } = e;
+    if (name === "google") {
+      signWithGoogle();
+    } else if (name === "github") {
+      signWithGithub();
+    }
+  };
 
   const onChange = (e) => {
     const {
@@ -82,34 +123,45 @@ const AuthForm = () => {
 
   const toggleAccount = () => setNewAccount((prev) => !prev);
   return (
-    <>
-      <Container onSubmit={onSubmit}>
-        <AuthInput
-          name="email"
-          type="email"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={onChange}
-        />
-        <AuthInput
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={onChange}
-        />
-        <AuthSubmit
-          type="submit"
-          value={newAccount ? "계정 만들기" : "로그인"}
-        />
-        {error && <AuthError>{error}</AuthError>}
+    <div>
+      <Container>
+        <Authform onSubmit={onSubmit}>
+          <AuthInput
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            value={email}
+            onChange={onChange}
+          />
+          <AuthInput
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+            value={password}
+            onChange={onChange}
+          />
+          <AuthSubmit
+            type="submit"
+            value={newAccount ? "계정 만들기" : "로그인"}
+          />
+          {error && <AuthError>{error}</AuthError>}
+        </Authform>
+
+        <AuthSwitch onClick={toggleAccount}>
+          {newAccount ? "로그인" : "계정 만들기"}
+        </AuthSwitch>
+        <AuthBtns>
+          <AuthBtn onClick={onSocialLoginClick} name="google">
+            구글로 계속하기 <SiGoogle />
+          </AuthBtn>
+          <AuthBtn onClick={onSocialLoginClick} name="github">
+            깃헙으로 계속하기 <SiGithub />
+          </AuthBtn>
+        </AuthBtns>
       </Container>
-      <AuthSwitch onClick={toggleAccount}>
-        {newAccount ? "로그인" : "계정 만들기"}
-      </AuthSwitch>
-    </>
+    </div>
   );
 };
 

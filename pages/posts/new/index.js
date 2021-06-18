@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useAuth } from "../../_app";
+import AuthForm from "../../../components/AuthForm";
 import { MarkedInput } from "../../../components/NewPost/markedInput";
 import { Result } from "../../../components/NewPost/result";
 import EditorContext from "../../../components/NewPost/editorContext";
@@ -27,6 +29,7 @@ const EditorContainer = styled.div`
 
 export default function NewPost() {
   const [markdownText, setMarkdownText] = useState("");
+  const auth = useAuth();
 
   const contextValue = {
     markdownText,
@@ -34,14 +37,24 @@ export default function NewPost() {
   };
 
   return (
-    <EditorContext.Provider value={contextValue}>
-      <AppContainer>
-        <Title>새 포스트</Title>
-        <EditorContainer>
-          <MarkedInput />
-          <Result />
-        </EditorContainer>
-      </AppContainer>
-    </EditorContext.Provider>
+    <>
+      {auth.user === null && auth.isLogin === null ? (
+        <div></div>
+      ) : auth.user !== null && auth.isLogin === true ? (
+        <>
+          <EditorContext.Provider value={contextValue}>
+            <AppContainer>
+              <Title>새 포스트</Title>
+              <EditorContainer>
+                <MarkedInput />
+                <Result />
+              </EditorContainer>
+            </AppContainer>
+          </EditorContext.Provider>
+        </>
+      ) : (
+        <AuthForm />
+      )}
+    </>
   );
 }

@@ -3,6 +3,7 @@ import Section from "../../components/Section";
 import Thumbnail from "../../components/Thumbnail";
 import styled from "styled-components";
 import Link from "next/link";
+import { useAuth } from "../_app";
 import { dbService } from "../../fbInstance";
 const Container = styled.div`
   position: relative;
@@ -87,6 +88,7 @@ export default function Posts({ allPostsData }) {
   const [Tags, setTags] = useState([]);
   const [Filter, setFilter] = useState("");
   const [isFilter, setisFilter] = useState(false);
+  const auth = useAuth();
   let Arr = [];
   let ReducedArr = [];
   useEffect(() => {
@@ -130,11 +132,13 @@ export default function Posts({ allPostsData }) {
                 </Tag>
               ))}
           </Items>
-          <NewPost>
-            <Link href="/posts/new">
-              <a style={{ color: "white" }}>새 포스트 작성</a>
-            </Link>
-          </NewPost>
+          {auth.isLogin && (
+            <NewPost>
+              <Link href="/posts/new">
+                <a style={{ color: "white" }}>새 포스트 작성</a>
+              </Link>
+            </NewPost>
+          )}
           <br />
           <br />
           <br />
