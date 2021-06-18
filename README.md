@@ -5,7 +5,10 @@
 
 - ### Devlog
 
-  #### Devlog는 프론트엔드 개발 공부를 하면서 습득한 스킬들을 기록하기 위해 만든 웹 블로그 입니다. 추후 지속적인 업데이트를 통해 프로젝트를 완성할 계획입니다.
+  #### Devlog는 프론트엔드 개발 공부를 하면서 습득한 스킬들을 기록하기 위해 만든 웹 블로그 입니다.
+  #### 블로그의 특성상 SEO의 중요도와 가벼움을 강조하기 위해 SSR을 쉽게 구현 할 수 있는 Next.js 를 프레임워크로 사용하였습니다.
+  #### 또한 언어는 Javascript를 사용하였고 DB는 Firebase, css는 styled-compontns를 사용했습니다.
+  ##### 추후 지속적인 업데이트를 진행할 계획입니다.
 
 ## 프로젝트 소개
 
@@ -61,7 +64,7 @@
 ## 적용기술
 
 - Framework : Next
-- Language : ES6
+- Language : Javascript
 - Database: firebase
 - Styling: styled-components
 - deploy : vercel
@@ -105,7 +108,6 @@
    기술스택, 자기소개
 - [x] contact 페이지 구현
 
----
 
 ## 수정 해야 할 사항
 
