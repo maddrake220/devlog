@@ -78,7 +78,7 @@
 ##### 또한 SSR과 CSR 동작 원리, SEO를 위한 Google robots 와 Google Search Console 등 여러 개념에 대해서도 알게되는 계기가 되었습니다.
 
 
-[!Link](https://devlog-maddrake.vercel.app)
+[HomepageLink](https://devlog-maddrake.vercel.app)
 
 
 
