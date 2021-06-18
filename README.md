@@ -21,7 +21,7 @@
   1. firebase와 연동하여 login 구현
   2. google, github 로 시작하기 구현
 
-![alt text](/images/devlog_home.jpg "login")
+![devlog_about](https://user-images.githubusercontent.com/83238246/122579545-fbe63180-d08f-11eb-85f3-a31f3c26b991.jpg)
 
 - ABOUT
   guage bar를 통해 기술 게이지 표시
