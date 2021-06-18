@@ -3,13 +3,13 @@
 ---
 ## Devlog 프로젝트 개요
 
-![devlog](https://user-images.githubusercontent.com/83238246/122579541-fab50480-d08f-11eb-9c1c-7cde74b0fee4.jpg)
-
 - ### Devlog
 
   #### Devlog는 프론트엔드 개발 공부를 하면서 습득한 스킬들을 기록하기 위해 만든 웹 블로그 입니다. 추후 지속적인 업데이트를 통해 프로젝트를 완성할 계획입니다.
 
 ## 프로젝트 소개
+
+![devlog](https://user-images.githubusercontent.com/83238246/122579541-fab50480-d08f-11eb-9c1c-7cde74b0fee4.jpg)
 
 - 홈 화면
   1. Observator를 이용해 스크롤시 이벤트 구현
