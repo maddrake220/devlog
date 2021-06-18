@@ -26,30 +26,28 @@
 - ABOUT
   guage bar를 통해 기술 게이지 표시
 
-![devlog_about](https://user-images.githubusercontent.com/83238246/122579545-fbe63180-d08f-11eb-85f3-a31f3c26b991.jpg)
+![devlog_portfolio](https://user-images.githubusercontent.com/83238246/122579550-fc7ec800-d08f-11eb-9ab2-7bd4618ce9b1.jpg)
 
 - PORTFOLIO  
   mordal 창을 통해 프로젝트 세부 정보 표시
 
-![devlog_portfolio](https://user-images.githubusercontent.com/83238246/122579550-fc7ec800-d08f-11eb-9ab2-7bd4618ce9b1.jpg)
+![devlog_post](https://user-images.githubusercontent.com/83238246/122579553-fd175e80-d08f-11eb-8b87-a88fd3d9d883.jpg)
 
 - BLOG
 
 1. markdown id별로 Grid형식으로 구현
 2. category 별 search 기능
 
-![devlog_post](https://user-images.githubusercontent.com/83238246/122579553-fd175e80-d08f-11eb-8b87-a88fd3d9d883.jpg)
+![devlog_post_id](https://user-images.githubusercontent.com/83238246/122579556-fd175e80-d08f-11eb-9fbc-5c9a522cc3a1.png)
 
 - Post by ID
-
-![devlog_post_id](https://user-images.githubusercontent.com/83238246/122579556-fd175e80-d08f-11eb-9fbc-5c9a522cc3a1.png)
 
 1. side bar Navigation 구현 -> 수정 예정
 2. Login 기반 댓글 구현
 
-- 포스팅 기능 구현
-
 ![devlog_blog_posting](https://user-images.githubusercontent.com/83238246/122579644-128c8880-d090-11eb-89e2-150a6a290ca3.jpg)
+
+- 포스팅 기능 구현
 
 1. TItle, Sub_title, Thumbnail 등록
 2. Markdown으로 작성하면 실시간 적용 화면 표시
