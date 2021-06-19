@@ -1,7 +1,7 @@
 export const GetDateFormatted = (date) => {
   const commentdate = new Date(date);
   const day = commentdate.getDate();
-  const month = commentdate.getMonth();
+  const month = commentdate.getMonth() + 1;
   const hours = commentdate.getHours();
   const year = commentdate.getFullYear();
 

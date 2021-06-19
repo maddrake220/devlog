@@ -14,7 +14,7 @@ const Auth = () => {
   return (
     <>
       {auth.isLogin ? (
-        <div>You already logged in ! </div>
+        <div>You're already logged in ! </div>
       ) : (
         <>
           <AuthForm />

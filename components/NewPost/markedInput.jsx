@@ -11,7 +11,6 @@ const Container = styled.div`
   height: 100%;
   padding: 13px;
   border-right: 1.5px solid rgba(15, 15, 15, 0.4);
-  font-family: "Lato", sans-serif;
 `;
 
 const Title = styled.div`
@@ -68,24 +67,17 @@ const NewSubTitle = styled.textarea`
   }
 `;
 
-const NewThumbNail_upload = styled.input`
-  position: absolute;
-  top: 0;
-  right: 0;
-`;
+const NewThumbNail_upload = styled.input``;
 
 const NewThumbNail = styled.div`
-  padding-right: 35px;
-  margin-right: 35px;
-  width: 360px;
-  height: 200px;
+  width: 20%;
 `;
 
 const NewThumbNail_img = styled.div`
   position: relative;
   background-image: url(${(props) => props.image});
-  width: 350px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -205,7 +197,8 @@ export function MarkedInput() {
             value={subTitle}
           />
         </div>
-        <div>
+        <NewThumbNail>
+          썸네일 이미지
           <Filebox>
             <NewThumbNail_upload
               id="onFileChange"
@@ -215,7 +208,7 @@ export function MarkedInput() {
             />
           </Filebox>
           {attachment && (
-            <NewThumbNail>
+            <>
               <NewThumbNail_img image={attachment} />
               <div
                 className="factoryForm__clear"
@@ -223,9 +216,9 @@ export function MarkedInput() {
               >
                 <Remove>Remove</Remove>
               </div>
-            </NewThumbNail>
+            </>
           )}
-        </div>
+        </NewThumbNail>
       </TitleArea>
 
       <Title>Markdown 입력창</Title>

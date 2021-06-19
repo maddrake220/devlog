@@ -30,6 +30,7 @@ const SDate = styled.div`
   margin-top: 6rem;
 `;
 const Title = styled.div`
+  text-align: left;
   font-size: 100px;
 `;
 
