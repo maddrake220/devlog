@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import useScrollFadeIn from "../components/useScrollFadeIn";
 import Section from "../components/Section";
 import Thumbnail from "../components/Thumbnail";
-import { getSortedPostsData } from "../lib/posts";
+import { dbService } from "../fbInstance";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import Portfolio from "../components/Portfolio";
 import About from "../components/Home/About";
@@ -100,14 +100,21 @@ const Pofol = styled.div`
   opacity: 0;
 `;
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
+export const getStaticProps = async () => {
+  const res = await dbService.collection("post").get();
+  const entry = res.docs.map((entry) => entry.data());
+  if (entry.length) {
+    return {
+      props: {
+        allPostsData: entry,
+      },
+    };
+  } else {
+    return {
+      props: {},
+    };
+  }
+};
 
 export default function Home({ allPostsData }) {
   const observer_about = useScrollFadeIn().ref;
@@ -169,12 +176,10 @@ export default function Home({ allPostsData }) {
               <Slider {...settings}>
                 {allPostsData.map((value) => (
                   <Thumbnail
-                    width="150px"
-                    height="140px"
                     id={value.id}
-                    year={value.date}
+                    year={value.createdAt}
                     title={value.title}
-                    image={value.image}
+                    image={value.attachmentUrl}
                   />
                 ))}
               </Slider>
